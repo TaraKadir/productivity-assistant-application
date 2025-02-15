@@ -1,0 +1,37 @@
+// La bara in några media queries jag googlade fram här så länge, så kan vi ändra dem sen. 
+
+/* === _media.scss === */
+
+/* === Mobile-first Styles (iPhone 14/15 Pro - 393px x 852px) === */
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: $base-padding;
+  }
+  
+  /* === Media Queries for Larger Screens === */
+  
+  /* Tablet (min-width: 600px) */
+  @media (min-width: 600px) {
+    .container {
+      flex-direction: row;
+      padding: $base-padding * 1.5;
+    }
+  
+    header, footer {
+      padding: $base-padding * 1.5;
+    }
+  }
+  
+  /* Desktop (min-width: 1024px) */
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+  
+    header, footer {
+      padding: $base-padding * 2;
+    }
+  }
+  

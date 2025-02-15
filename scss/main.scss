@@ -1,0 +1,19 @@
+// Huvudfilen som importerar alla SCSS-filer
+
+/* === main.scss === */
+
+@import 'partials/variables';
+@import 'partials/mixins';
+@import 'partials/media';
+@import 'partials/header';
+@import 'partials/footer';
+
+
+// Globala stilar tex:
+
+/*
+body {
+    font-family: $font-family;
+    margin: 0;
+  }
+*/
