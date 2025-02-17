@@ -9,11 +9,26 @@
 @import 'partials/footer';
 
 
-// Globala stilar tex:
 
-/*
 body {
-    font-family: $font-family;
+    background-color: $primary-backgroundcolor;
+    color: $primary-textcolor;
+    font-family: $primary-font;
+    text-align: center;
     margin: 0;
+    padding: 0;
   }
-*/
+
+
+  main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+
+
+ 
+  
