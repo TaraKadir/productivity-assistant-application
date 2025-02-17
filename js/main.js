@@ -1,0 +1,1 @@
+// För gemensam js-kod
