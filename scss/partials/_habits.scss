@@ -1,3 +1,8 @@
+*main{
+    display: flex;
+    flex-direction: column;
+
+}
 .habit-container{
     background-color: $card-backgroundcolor;
     padding: 10px;
@@ -12,4 +17,176 @@
 
 }    :hover{
         border-color: #FFBC2C;
+        // border-style: none;
     }
+
+.hidden{
+    display: none;
+}
+
+   #form-container{
+    display: flex;
+    flex-direction: column;
+    
+    // background-color: $card-backgroundcolor;
+    // border-color: black;
+    // border-style: dotted;
+    // padding: 50px;
+    
+    border: 1px solid white;
+    padding: 20px;
+    background-color: $card-backgroundcolor;
+    width: 300px;
+    margin-top: 20px;
+      //    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+
+    // #addHabitContainer{
+    //     display: flex;
+    //     flex-direction: column;
+    //     // border:orange solid 5px;
+    //     border: 5px solid white;
+    //     border-radius: 8px;
+    // //    #28 (https://getcssscan.com/css-box-shadow-examples):
+    //    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    //  //   #8 (https://getcssscan.com/css-box-shadow-examples) :
+    //  //box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+       
+    //    padding: 20PX;   
+    // }
+
+
+
+        
+    
+
+
+    #habitForm {
+        display: flex;
+        // flex-direction: column;
+        flex-wrap: wrap;
+        gap: 10px;
+        border: 1px solid #ffffff;
+        border-radius: 8px;
+        padding-top: 50px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        background-color: $card-backgroundcolor;
+        width: 300px;
+        margin-top: 20px;   
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+      }
+      
+      #habitForm label,
+      #habitForm input,
+      #habitForm select {
+        flex: 1; /* Gör att elementen delar på utrymmet */
+        margin: 5px 0;
+      }
+      
+      #habitForm br {
+        display: none; /* Ta bort radbrytningar */
+      }
+      
+      .habit-action-btn {
+        display: flex;
+        gap: 10px;
+      }
+
+//     #habitForm{
+//         display: flex;
+//         flex-direction: column;
+      
+//         // display: block;
+//         // border-color: #ffffff;
+//         // border: #ffffff solid 10px;
+       
+//         border-radius: 8px;
+//         padding-top: 20px;
+//         padding-left: 15px;
+//         padding-right: 15px;
+//         margin-bottom: 0;
+
+//         //border: #db1111 dotted 10px; //använd för att se
+
+
+   
+//             // border:orange solid 5px;
+//             border-radius: 8px;
+//         //    #28 (https://getcssscan.com/css-box-shadow-examples):
+//            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+//          //   #8 (https://getcssscan.com/css-box-shadow-examples) :
+//          //box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    
+           
+//            padding: 20PX;   
+        
+    
+    
+//     button{
+//         border-color: #ffffff;
+//         border-radius: 6px;
+//         padding: 10px;
+            
+//         }
+// }
+
+
+
+// .habit-action-btn{
+//     display: flex;
+//     justify-content: space-between;
+//     #add-habit-button,#cancel-habit-btn{
+//         margin-top: 20px;
+//         border-style:none;
+//         }
+
+// }
+
+
+
+.habit-action-btn {
+    display: flex;
+    justify-content: space-between; 
+    width: 100%; /* tar upp hela bredden */
+    margin-top: 10px; 
+  }
+  
+  #cancel-habit-btn, #add-habit-button {
+    flex: 1; /* Gör att knapparna delar på utrymmet  */
+    border-radius: 6px;
+    border: none;
+    text-align: center; 
+  }
+  
+//   #cancel-habit-btn {
+//     border: #e74c3c 5px ;
+//   }
+  
+//   #add-habit-button {
+//     border:#00ecad 5px;
+//   }
+
+
+.number-input {
+    display: flex;
+    gap: 5px;
+  
+    button {
+      background-color: $card-backgroundcolor;
+      border: none;
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  
+    input {
+      width: 50px;
+      text-align: center;
+    }
+  }

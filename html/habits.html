@@ -8,8 +8,11 @@
     <script src="/js/habits.js" defer></script>
     <script src="/js/main.js" defer></script>
   </head>
+
   <body>
+
     <div class="wrap-container">
+
       <header>
         <img src="/images/login-icon.svg" alt="login-icon" class="login-icon" />
         <img src="/images/adhd-logo.svg" alt="logo" class="logo" />
@@ -17,7 +20,106 @@
 
       <main>
         <p class="date">MONDAY 17 MAY 2025</p>
+
+        <div id="form-container">
+         <button id="createHabitButton">Create new habit</button>
+
+          <!-- <div id="addHabitContainer" class="hidden">
+            
+              <form id="habitForm">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" required>
+                <br>
+                <label for="priority">Priority:</label>
+                  <select name="priority" id="priority">
+                    <option value="empty">Choose</option>
+                    <option value="Low">Low</option>
+                    <option value="Normal">Normal</option>
+                    <option value="High">High</option>
+                </select>
+                <br>
+                <label for="repeat">Repeat:</label>
+                  <input type="number" name="repeat" id="repeat" value="empty">  
+                <br>
+                <label for="category">Category:</label>
+                  <select name="category" id="category">
+                    <option value="empty">Choose</option>
+                    <option value="study">Study</option>
+                    <option value="workout">Workout</option>
+                    <option value="cleaning">Cleaning</option>
+                  </select>
+                  
+                <div class="habit-action-btn">
+                  <button id="cancel-habit-btn">Cancel</button> 
+                  <input type="submit" value="add" id="add-habit-button">
+                </div>
+              </form>
+
+              
+
+
+
+
+          </div> -->
+
+          <div id="addHabitContainer" class="hidden">
+            <form id="habitForm">
+              <div class="form-row">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" required>
+              </div>
+              <div class="form-row">
+                <label for="priority">Priority:</label>
+                <select name="priority" id="priority">
+                  <option value="empty">Choose</option>
+                  <option value="Low">Low</option>
+                  <option value="Normal">Normal</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+              <!-- <div class="form-row">
+                <label for="repeat">Repeat:</label>
+                <input type="number" name="repeat" id="repeat"">
+              </div> -->
+
+              <div class="form-row">
+                <label for="repeat">Repeat:</label>
+                <div class="number-input">
+                  <input type="number" name="repeat" id="repeat" value="1" min="1">
+                                   <button type="button" class="decrement">−</button>
+
+                  <button type="button" class="increment">+</button>
+                </div>
+              </div>
+
+
+              <div class="form-row">
+                <label for="category">Category:</label>
+                <select name="category" id="category">
+                  <option value="empty">Choose</option>
+                  <option value="study">Study</option>
+                  <option value="workout">Workout</option>
+                  <option value="cleaning">Cleaning</option>
+                </select>
+              </div>
+              
+              <div class="habit-action-btn">
+                <button id="cancel-habit-btn">Cancel</button>
+                <input type="submit" value="Add" id="add-habit-button">
+              </div>
+            </form>
+          </div>
+          
+
+
+        </div>
+
+
+
+
       </main>
+
+
 
       <nav class="bottom-nav">
         <a href="home.html" class="nav-item"
@@ -47,5 +149,7 @@
         >
       </nav>
     </div>
+
+
   </body>
 </html>
