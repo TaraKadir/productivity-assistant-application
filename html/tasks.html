@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tasks - Productivity Assistant Application</title>
-    <link rel="stylesheet" href="/scss/main.css" />
+    <link rel="stylesheet" href="/src/main.css" />
     <script src="/js/tasks.js" defer></script>
     <script src="/js/main.js" defer></script>
   </head>
@@ -14,18 +14,46 @@
         <img src="/images/login-icon.svg" alt="login-icon" class="login-icon" />
         <img src="/images/adhd-logo.svg" alt="logo" class="logo" />
       </header>
-
+<br>
       <main>
         <p class="date">MONDAY 17 MAY 2025</p>
       </main>
+      <br>
+      <br>
+      <br>
 
-      <nav class="bottom-nav">
+      <div class="center">
+        <button id="open-todo">Show Task</button>
+      </div>
+      <div class="todo" id="todo">
+        <div class="overlay"></div>
+        <div class="todo-content">
+          <img src="/images/cross-svgrepo-com.svg" class="close-icon" alt="Close the modal" style="width: 24; height: 24px;"></i>
+          <span class="edit-icon">&#9998;</span> <!-- Single Pen Icon -->
+          <h1>To Do Title</h1>
+          <h2>Category</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        <div class="controls">
+          <button class="save-btn">Save</button>
+        </div>
+        </div>
+      </div>
+
+     <!-- <ul id="todo-list">
+        <li>Item 1<button class="-">Show Task Card</button></li>
+        <li>Item 2<button class="-">Show Task Card</button></li>
+        <li>Item 3<button class="-">Show Task Card</button></li>
+     </ul> -->
+    
+
+      
+<nav class="bottom-nav">
         <a href="home.html" class="nav-item"
           ><img
             src="/images/home-1_svgrepo.com.svg"
             alt="Home icon, press to go to start page"
           /><span>Home</span></a
-        >
+>
         <a href="tasks.html" class="nav-item"
           ><img
             src="/images/form_svgrepo.com.svg"
@@ -43,8 +71,7 @@
           ><img
             src="/images/calender_svgrepo.com.svg"
             alt="Events icon, press to go to event page"
-          /><span>Events</span></a
-        >
+          /><span>Events</span></a>
       </nav>
     </div>
   </body>
