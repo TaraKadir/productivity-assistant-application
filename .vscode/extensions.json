@@ -1,5 +1,9 @@
 {
     "recommendations": [
+<<<<<<< HEAD
+        "github.codespaces"
+=======
         "bracketpaircolordlw.bracket-pair-color-dlw"
+>>>>>>> cf8a4262f41bf6a5a334d94d0fac01732a463f90
     ]
 }
