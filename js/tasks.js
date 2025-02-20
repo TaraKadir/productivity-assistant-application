@@ -1,24 +1,45 @@
 document.addEventListener('DOMContentLoaded', function () {
-    function createToDo(id) {
-        let todoNode = document.querySelector(id);
+    // Create modal display function
+    function openToDoModal(taskId) {
+        let todoNode = document.querySelector("#todo");
         let overlay = todoNode.querySelector(".overlay");
         let closeIcon = todoNode.querySelector(".close-icon");
 
-        function openToDo() {
-            todoNode.classList.add("todo-active");  // Add todo-active class
+        // Show modal
+        todoNode.classList.add("todo-active");
+
+        // Get modal content and update based on the clicked task
+        const title = todoNode.querySelector("h1");
+        const description = todoNode.querySelector("p");
+
+        if (taskId === "task1") {
+            title.textContent = "Task 1 Title";
+            description.textContent = "This is a description for task 1.";
+        } else if (taskId === "task2") {
+            title.textContent = "Task 2 Title";
+            description.textContent = "This is a description for task 2.";
+        } else if (taskId === "task3") {
+            title.textContent = "Task 3 Title";
+            description.textContent = "This is a description for task 3.";
         }
 
-        function closeTodo() {
-            todoNode.classList.remove("todo-active");  // Remove todo-active class
+        // Event listener for closing the modal
+        function closeToDo() {
+            todoNode.classList.remove("todo-active");
         }
 
-        overlay.addEventListener("click", closeTodo);
-        closeIcon.addEventListener("click", closeTodo);
-        return openToDo;
+        overlay.addEventListener("click", closeToDo);
+        closeIcon.addEventListener("click", closeToDo);
     }
 
-    let todo = createToDo("#todo");
-    document.querySelector("#open-todo").addEventListener("click", todo);
+    // Add event listener to each "Show Task Card" button
+    const taskButtons = document.querySelectorAll('.show-task-btn');
+    taskButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const taskId = button.getAttribute('data-task');  // Get the task ID from data-task attribute
+            openToDoModal(taskId);  // Call modal open function
+        });
+    });
 
     // Single pen icon to edit the content of the card
     const editIcon = document.querySelector('.edit-icon');
@@ -44,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
         editableElements.forEach(element => {
             element.removeAttribute('contenteditable');
         });
-
 
         // Optionally, change the icon color back to the normal state after saving
         editIcon.style.color = '#3284ed';  // Reset the edit icon color
