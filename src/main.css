@@ -87,9 +87,23 @@ header .login-icon {
   background-image: url("/images/cta-button-hover.svg");
 }
 
+.habit-container {
+  background-color: #FBFAF7;
+  padding: 10px;
+  border-radius: 5px;
+  border-color: #ffffff;
+  width: 15rem;
+  height: 5rem;
+  margin-top: 30px;
+}
+
+:hover {
+  border-color: #FFBC2C;
+}
+
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -107,20 +121,21 @@ body {
 .todo {
   position: fixed;
   top: 100vh;
-  left: 0px;
+  left: 0;
   width: 100%;
   height: 100%;
+  transition: top 300ms ease-in-out;
 }
 
 .todo .overlay {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
-  transition: opacity 100ms ease-in-out 200ms;
+  transition: opacity 300ms ease-in-out;
 }
 
 .todo .todo-content {
@@ -139,21 +154,21 @@ body {
 }
 
 .todo .todo-content h1 {
-  margin: 10px 0px;
+  margin: 10px 0;
   font-size: 20px;
   color: #616161;
   text-align: left;
 }
 
 .todo .todo-content h2 {
-  margin: 10px 0px;
+  margin: 10px 0;
   font-size: 16px;
   color: #616161;
   text-align: left;
 }
 
 .todo .todo-content p {
-  margin: 15px 0px;
+  margin: 15px 0;
   color: #616161;
   font-size: 14px;
   text-align: left;
@@ -162,7 +177,7 @@ body {
 .todo .todo-content .controls {
   display: flex;
   justify-content: space-between;
-  margin: 20px 0px 0px;
+  margin: 20px 0 0;
 }
 
 .todo .todo-content .controls button {
@@ -185,13 +200,14 @@ body {
 }
 
 .todo-active {
-  top: 0px;
+  top: 0;
   transition: top 0ms ease-in-out 0ms;
+  display: block;
 }
 
 .todo-active .overlay {
   opacity: 1;
-  transition: all 300ms ease-in-out;
+  transition: all 0ms ease-in-out 0ms;
 }
 
 .todo-active .todo-content {
@@ -199,7 +215,6 @@ body {
   opacity: 1;
 }
 
-/* Edit Icon styling */
 .edit-icon {
   cursor: pointer;
   font-size: 20px;
@@ -215,9 +230,8 @@ body {
   color: #ff9900;
 }
 
-/* Cross icon styling */
 .close-icon {
-  color: #616161; /* You can change the color */
+  color: #616161;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -226,11 +240,6 @@ body {
   transition: color 0.3s ease;
 }
 
-.close-icon:hover {
-  color: #ff0000; /* Change color on hover */
-}
-
-/* Editable elements styling */
 h1[contenteditable], h2[contenteditable], p[contenteditable] {
   border: 1px solid #616161;
   padding: 5px;
