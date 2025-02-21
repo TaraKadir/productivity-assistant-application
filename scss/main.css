@@ -87,13 +87,71 @@ header .login-icon {
   background-image: url("/images/cta-button-hover.svg");
 }
 
-* main {
-  display: flex;
-  flex-direction: column;
+.events-section {
+  margin: 20px;
+  padding: 15px;
+}
+.events-section h2 {
+  font-size: 16px;
+  color: #b7b7b7;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  width: 100%;
 }
 
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wrap-container {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.date {
+  font-size: 16px;
+  font-weight: 100;
+  font-family: "Roboto", sans-serif;
+  color: #b7b7b7;
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-size: 35px;
+  font-weight: 200;
+  font-family: "Roboto", sans-serif;
+  font-variation-settings: "wght" 200;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 430px) {
+  .wrap-container {
+    max-width: 100%;
+  }
+  h1 {
+    font-size: 35px;
+  }
+}
 .habit-container {
-  background-color: #FBFAF7;
+  background-color: #fbfaf7;
   padding: 10px;
   border-radius: 5px;
   border-color: #ffffff;
@@ -103,7 +161,7 @@ header .login-icon {
 }
 
 :hover {
-  border-color: #FFBC2C;
+  border-color: #ffbc2c;
 }
 
 .hidden {
@@ -115,7 +173,7 @@ header .login-icon {
   flex-direction: column;
   border: 1px solid white;
   padding: 20px;
-  background-color: #FBFAF7;
+  background-color: #fbfaf7;
   width: 300px;
   margin-top: 20px;
 }
@@ -130,7 +188,7 @@ header .login-icon {
   padding-right: 20px;
   padding-bottom: 20px;
   padding-left: 20px;
-  background-color: #FBFAF7;
+  background-color: #fbfaf7;
   width: 300px;
   margin-top: 20px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -159,7 +217,8 @@ header .login-icon {
   margin-top: 10px;
 }
 
-#cancel-habit-btn, #add-habit-button {
+#cancel-habit-btn,
+#add-habit-button {
   flex: 1; /* Gör att knapparna delar på utrymmet  */
   border-radius: 6px;
   border: none;
@@ -171,7 +230,7 @@ header .login-icon {
   gap: 5px;
 }
 .number-input button {
-  background-color: #FBFAF7;
+  background-color: #fbfaf7;
   border: none;
   width: 30px;
   height: 30px;
@@ -185,7 +244,7 @@ header .login-icon {
 }
 
 body {
-  background-color: #F3F2EE;
+  background-color: #f3f2ee;
   color: #000000;
   font-family: "Roboto", sans-serif;
   text-align: center;
@@ -198,4 +257,4 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-}/*# sourceMappingURL=main.css.map */
+} /*# sourceMappingURL=main.css.map */
