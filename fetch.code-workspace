@@ -1,9 +1,5 @@
 {
-	"folders": [
-		{
-			"path": "../VS CODE"
-		}
-	],
+	"folders": [],
 	"settings": {
 		"liveServer.settings.multiRootWorkspaceName": "na-fend-js1-exam-main",
 		"git.ignoreLimitWarning": true
