@@ -1,10 +1,15 @@
-TASKS/CSS
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+tasksbody {
+    font-family: "Roboto", sans-serif;
+    background-color: #f3f2ee;
+}
+
 
 header {
     display:flex;
@@ -286,7 +291,6 @@ h1[contenteditable], h2[contenteditable], p[contenteditable] {
       height: 24px;
     }
   }
-
 
 .cta-button {
     border-radius: 50%;
