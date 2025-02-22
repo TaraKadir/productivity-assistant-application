@@ -1,4 +1,4 @@
-*main{
+.main-habit{
   display: flex;
   flex-direction: column;
 
@@ -33,7 +33,8 @@
   // border-style: dotted;
   // padding: 50px;
   
-  border: 1px solid white;
+  // border: 1px solid white;
+  border: 15px solid rgb(213, 24, 24);
   padding: 20px;
   background-color: $card-backgroundcolor;
   width: 300px;
@@ -41,20 +42,6 @@
     //    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   }
 
-  // #addHabitContainer{
-  //     display: flex;
-  //     flex-direction: column;
-  //     // border:orange solid 5px;
-  //     border: 5px solid white;
-  //     border-radius: 8px;
-  // //    #28 (https://getcssscan.com/css-box-shadow-examples):
-  //    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  //  //   #8 (https://getcssscan.com/css-box-shadow-examples) :
-  //  //box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-
-     
-  //    padding: 20PX;   
-  // }
 
 
 
@@ -88,8 +75,8 @@
     }
     
     #habitForm br {
-      display: none; /* Ta bort radbrytningar */
-    }
+      display: none; 
+    }/* Ta bort radbrytningar */
     
     .habit-action-btn {
       display: flex;
@@ -153,6 +140,7 @@
   justify-content: space-between; 
   width: 100%; /* tar upp hela bredden */
   margin-top: 10px; 
+  // border: #00ecad 5px dotted;
 }
 
 #cancel-habit-btn, #add-habit-button {
@@ -160,15 +148,16 @@
   border-radius: 6px;
   border: none;
   text-align: center; 
+  
 }
 
-//   #cancel-habit-btn {
-//     border: #e74c3c 5px ;
-//   }
+  #cancel-habit-btn {
+    border: #e74c3c 5px ;
+  }
 
-//   #add-habit-button {
-//     border:#00ecad 5px;
-//   }
+  #add-habit-button {
+    border:#00ecad 5px;
+  }
 
 
 .number-input {
@@ -190,3 +179,25 @@
     text-align: center;
   }
 }
+
+
+
+
+
+
+
+// Ska nog bort: 
+  // #addHabitContainer{
+  //     display: flex;
+  //     flex-direction: column;
+  //     // border:orange solid 5px;
+  //     border: 5px solid white;
+  //     border-radius: 8px;
+  // //    #28 (https://getcssscan.com/css-box-shadow-examples):
+  //    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  //  //   #8 (https://getcssscan.com/css-box-shadow-examples) :
+  //  //box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+     
+  //    padding: 20PX;   
+  // }
