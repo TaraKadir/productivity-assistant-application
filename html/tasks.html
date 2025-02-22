@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Tasks - Productivity Assistant Application</title>
-    <link rel="stylesheet" href="/src/main.css" />
+    <link rel="stylesheet" href="/scss/main.css"/>
     <script src="/js/tasks.js" defer></script>
     <script src="/js/main.js" defer></script>
   </head>
@@ -15,36 +15,48 @@
         <img src="/images/adhd-logo.svg" alt="logo" class="logo" />
       </header>
 <br>
+<br>
       <main>
-        <p class="date">MONDAY 17 MAY 2025</p>
-      </main>
-      <br>
+       <p class="date">Loading date...</p>
+      </main></div> 
       <br>
       <br>
 
-      <div class="center">
-        <button id="open-todo">Show Task</button>
-      </div>
       <div class="todo" id="todo">
         <div class="overlay"></div>
         <div class="todo-content">
           <img src="/images/cross-svgrepo-com.svg" class="close-icon" alt="Close the modal" style="width: 24; height: 24px;"></i>
-          <span class="edit-icon">&#9998;</span> <!-- Single Pen Icon -->
-          <h1>To Do Title</h1>
-          <h2>Category</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+          <span class="edit-icon">&#9998;</span> 
+          <h1 class="todo-title">To Do Title</h1>
+          <h2 class="category-title">Category</h2>
+          <p class="todo-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
         <div class="controls">
           <button class="save-btn">Save</button>
         </div>
         </div>
       </div>
-
-     <!-- <ul id="todo-list">
-        <li>Item 1<button class="-">Show Task Card</button></li>
-        <li>Item 2<button class="-">Show Task Card</button></li>
-        <li>Item 3<button class="-">Show Task Card</button></li>
-     </ul> -->
-    
+      <label class=”custom-checkbox” for=”todo-1”>
+        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM16.0303 8.96967C16.3232 9.26256 16.3232 9.73744 16.0303 10.0303L11.0303 15.0303C10.7374 15.3232 10.2626 15.3232 9.96967 15.0303L7.96967 13.0303C7.67678 12.7374 7.67678 12.2626 7.96967 11.9697C8.26256 11.6768 8.73744 11.6768 9.03033 11.9697L10.5 13.4393L12.7348 11.2045L14.9697 8.96967C15.2626 8.67678 15.7374 8.67678 16.0303 8.96967Z" fill="#FFBC2C"></path> </g></svg>
+        </label>        
+</label>
+     <div class="list-container">
+        <ul id="todo-list">
+        <li>
+            Task 1
+            <button class="show-task-btn" data-task="task1">Show Task Card</button>
+        </li>
+        <li>
+            Task 2
+            <button class="show-task-btn" data-task="task2">Show Task Card</button>
+        </li>
+        <li>
+            Task 3
+            <button class="show-task-btn" data-task="task3">Show Task Card</button>
+        </li>
+    </ul>
+    <button id="add-task-btn">Add Task</button>
+  </div>
+ 
 
       
 <nav class="bottom-nav">
@@ -73,6 +85,6 @@
             alt="Events icon, press to go to event page"
           /><span>Events</span></a>
       </nav>
-    </div>
+    </div> 
   </body>
 </html>
