@@ -4,7 +4,7 @@
 
     h2 {
         font-size: 16px;
-        color: lighten($secondary-textcolor, 10%); // Gör texten ljusare
+        color: lighten($secondary-textcolor, 10%);
         font-weight: normal;
         letter-spacing: 0.5px; 
         margin-bottom: 10px;
@@ -42,12 +42,11 @@ main {
 // Datum-styling
 .date {
     font-size: 16px;
-    font-weight: 100; // Roboto Thin
+    font-weight: 100;
     font-family: $primary-font;
-    color: lighten($secondary-textcolor, 10%); // Gör den lite ljusare
+    color: lighten($secondary-textcolor, 10%);
     margin-bottom: 5px;
 }
-
 
 // Huvudrubriken "Events"
 h1 {
@@ -58,8 +57,128 @@ h1 {
     margin-bottom: 15px;
 }
 
+// 🔹 Filter & Sortering - Justera placering åt höger
+.filter-sort-container {
+    display: flex;
+    justify-content: flex-end; /* Flyttar knapparna åt höger */
+    gap: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    padding-right: 20px; /* Avstånd från kanten */
+    position: relative;
+}
 
-// Anpassning för iPhone 14 Pro Max (430px bredd)
+// 🔹 Filter & Sort-knappar (text inuti knapparna)
+.filter-btn, .sort-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrerar text + ikon */
+    gap: 5px;  
+    background: #F8F7F4;
+    border: 2px solid #ccc;
+    padding: 8px 20px; /* Lite större padding för att få plats med texten */
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+    min-width: 80px; /* Minsta bredden så texten alltid syns */
+
+    &:hover {
+        background: rgba(255, 188, 44, 0.1);
+    }
+
+    &.active {
+        border-color: #FFBC2C;
+        background: rgba(255, 188, 44, 0.1);
+    }
+
+    img {
+        width: 14px; 
+        height: 14px;
+    }
+}
+
+// 🔹 Justerar filter-menyn
+.filter-menu {
+    display: none;
+    position: absolute;
+    background: #F8F7F4;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 100px;
+
+    /* 🔹 Positionera menyn korrekt under knappen */
+    top: 100%; /* Menyn hamnar direkt under filter-knappen */
+    left: 48%;
+     
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s;
+}
+
+.filter-menu.show {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+// 🔹 Stiljusteringar för titeln
+.filter-title {
+    font-size: 14px;
+    color: #7D7D7D; // Gråare text
+    font-weight: 100;
+    margin-bottom: 8px;
+    text-align: left; // 🔹 Se till att texten hamnar till vänster
+    display: block; // 🔹 Säkerställer att den står ensam på en rad
+}
+
+
+// 🔹 Anpassa checkbox och text
+.filter-menu label {
+    display: flex;
+    align-items: center;
+    gap: 10px; // Mer mellanrum mellan checkbox och text
+    font-size: 16px; // Större text
+    font-weight: 500;
+    color: #333; // Mörkare text för bättre läsbarhet
+    text-align: left;
+}
+
+// 🔹 Stil för checkboxarna
+.filter-menu input[type="checkbox"] {
+    width: 20px; // Större checkbox
+    height: 20px;
+    border-radius: 6px; // Rundade kanter
+    border: 2px solid #B0B0B0; // Ljusgrå kant
+    cursor: pointer;
+}
+
+/* 🔹 Se till att filter-knappen har relativ position */
+.filter-btn {
+    position: relative; /* Viktigt för att filter-menyn ska hamna rätt */
+}
+
+// 🔹 Justerar "Upcoming Events" och "Finished Events"
+#events-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.events-section {
+    width: 90%;
+    max-width: 400px;
+}
+
+// 🔹 Anpassning för iPhone 14 Pro Max (430px bredd)
 @media (max-width: 430px) {
     .wrap-container {
         max-width: 100%;
