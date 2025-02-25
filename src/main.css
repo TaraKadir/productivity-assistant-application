@@ -142,6 +142,114 @@ h1 {
   margin-bottom: 15px;
 }
 
+.filter-sort-container {
+  display: flex;
+  justify-content: flex-end; /* Flyttar knapparna åt höger */
+  gap: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  padding-right: 20px; /* Avstånd från kanten */
+  position: relative;
+}
+
+.filter-btn, .sort-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centrerar text + ikon */
+  gap: 5px;
+  background: #F8F7F4;
+  border: 2px solid #ccc;
+  padding: 8px 20px; /* Lite större padding för att få plats med texten */
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+  min-width: 80px; /* Minsta bredden så texten alltid syns */
+}
+.filter-btn:hover, .sort-btn:hover {
+  background: rgba(255, 188, 44, 0.1);
+}
+.filter-btn.active, .sort-btn.active {
+  border-color: #FFBC2C;
+  background: rgba(255, 188, 44, 0.1);
+}
+.filter-btn img, .sort-btn img {
+  width: 14px;
+  height: 14px;
+}
+
+.filter-menu {
+  display: none;
+  position: absolute;
+  background: #F8F7F4;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 100px;
+  /* 🔹 Positionera menyn korrekt under knappen */
+  top: 100%; /* Menyn hamnar direkt under filter-knappen */
+  left: 48%;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s;
+}
+
+.filter-menu.show {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.filter-title {
+  font-size: 14px;
+  color: #7D7D7D;
+  font-weight: 100;
+  margin-bottom: 8px;
+  text-align: left;
+  display: block;
+}
+
+.filter-menu label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  text-align: left;
+}
+
+.filter-menu input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid #B0B0B0;
+  cursor: pointer;
+}
+
+/* 🔹 Se till att filter-knappen har relativ position */
+.filter-btn {
+  position: relative; /* Viktigt för att filter-menyn ska hamna rätt */
+}
+
+#events-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.events-section {
+  width: 90%;
+  max-width: 400px;
+}
+
 @media (max-width: 430px) {
   .wrap-container {
     max-width: 100%;
@@ -150,113 +258,116 @@ h1 {
     font-size: 35px;
   }
 }
-.main-habit {
+.action-buttons {
   display: flex;
-  flex-direction: column;
-}
-
-.habit-container {
-  background-color: #FBFAF7;
-  padding: 10px;
-  border-radius: 5px;
-  border-color: #ffffff;
-  width: 15rem;
-  height: 5rem;
-  margin-top: 30px;
-}
-
-:hover {
-  border-color: #FFBC2C;
-}
-
-.hidden {
-  display: none;
-}
-
-#form-container {
-  display: flex;
-  flex-direction: column;
-  border: 15px solid rgb(213, 24, 24);
-  padding: 20px;
-  background-color: #FBFAF7;
-  width: 300px;
-  margin-top: 20px;
-}
-
-#habitForm {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 8px;
-  padding-top: 50px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  background-color: #FFBC2C;
-  width: 300px;
-  margin-top: 20px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
-#habitForm label,
-#habitForm input,
-#habitForm select {
-  flex: 1; /* Gör att elementen delar på utrymmet */
-  margin: 5px 0;
-}
-
-#habitForm br {
-  display: none;
-} /* Ta bort radbrytningar */
-.habit-action-btn {
-  display: flex;
-  gap: 10px;
-}
-
-.habit-action-btn {
-  display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  width: 100%; /* tar upp hela bredden */
-  margin-top: 10px;
 }
 
-#cancel-habit-btn, #add-habit-button {
-  flex: 1; /* Gör att knapparna delar på utrymmet  */
-  border-radius: 6px;
+button {
+  background-color: #7C7C7C;
+  color: #fff;
+  margin-top: 50px;
+  padding: 10px 20px;
   border: none;
-  text-align: center;
-}
-
-#cancel-habit-btn {
-  border: #e74c3c 5px;
-}
-
-#add-habit-button {
-  border: #00ecad 5px;
-}
-
-.number-input {
-  display: flex;
-  gap: 5px;
-}
-.number-input button {
-  background-color: #FBFAF7;
-  border: none;
-  width: 30px;
-  height: 30px;
-  font-size: 20px;
+  outline: none;
+  font-size: 15px;
+  border-radius: 20px;
   cursor: pointer;
-  border-radius: 5px;
 }
-.number-input input {
-  width: 50px;
-  text-align: center;
+
+button:hover {
+  background-color: #444;
+}
+
+.popup {
+  display: none; /* Dold från början */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: #FBFAF7;
+  margin: auto;
+  padding: 25px;
+  gap: 5px;
+  border-radius: 20px;
+  width: 300px;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.habit-card {
+  background: #FBFAF7;
+  padding: 15px;
+  margin: 250px auto;
+  width: 250px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #616161;
+  text-align: left;
+}
+
+input {
+  padding-top: 1px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 8px;
+  border-style: none;
+  font-size: 16px;
+  height: 100%;
+}
+
+select {
+  display: flex;
+  width: 100%; /* Säkerställer att dropdownen tar upp hela bredden av föräldraelementet */
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: transparent;
+  font-size: 16px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+option {
+  font-size: 16px; /* Sätter textstorleken på alternativen i dropdownen */
+  padding: 8px; /* Justerar padding i alternativen för bättre läsbarhet */
+}
+
+select:valid {
+  color: rgb(255, 136, 0);
+}
+
+h1 {
+  color: #616161;
+  font-size: 20px;
 }
 
 tasksbody {
   font-family: "Roboto", sans-serif;
-  background-color: #f3f2ee;
+  background-color: #F3F2EE;
 }
 
 header {
@@ -317,7 +428,7 @@ header .login-icon {
   transform: translate(-50%, -50%) scale(1.15);
   width: 95%;
   max-width: 350px;
-  background: #fbfaf7;
+  background: #FBFAF7;
   padding: 25px;
   border-radius: 20px;
   opacity: 0;
@@ -360,10 +471,10 @@ header .login-icon {
 }
 .todo .todo-content .controls {
   background: transparent;
-  color: #7c7c7c;
+  color: #7C7C7C;
 }
 .todo .todo-content .controls .save-btn {
-  background: #7c7c7c;
+  background: #7C7C7C;
   color: #fff;
   padding: 10px 20px;
   border-radius: 20px;
@@ -398,7 +509,7 @@ header .login-icon {
   transition: color 0.3s ease;
 }
 .edit-icon:hover {
-  color: #ff9900;
+  color: #FF9900;
 }
 
 /* Edit Task */
@@ -421,7 +532,7 @@ header .login-icon {
   margin: 20px auto;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #7c7c7c;
+  background-color: #7C7C7C;
   color: white;
   border: none;
   border-radius: 10px;
@@ -429,7 +540,7 @@ header .login-icon {
   transition: background 0.3s ease-in-out;
 }
 .add-task-btn:hover {
-  background-color: #5a5a5a;
+  background-color: #5A5A5A;
 }
 
 /* Add Task Button */
@@ -457,7 +568,7 @@ header .login-icon {
 /* List Container */
 .list-container {
   display: block;
-  background-color: #fbfaf7;
+  background-color: #FBFAF7;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -466,7 +577,7 @@ header .login-icon {
   max-width: 350px;
   margin: 10px auto;
   margin-top: 10px auto;
-  border: 1px #d9d9d9;
+  border: 1px #D9D9D9;
 }
 
 /* List Container */
@@ -521,7 +632,7 @@ header .login-icon {
   margin: 0;
 }
 #todo-list li {
-  background-color: #fbfaf7;
+  background-color: #FBFAF7;
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 10px;
@@ -530,7 +641,7 @@ header .login-icon {
   align-items: center;
 }
 #todo-list .show-task-btn {
-  background-color: #f4f4f4;
+  background-color: #F4F4F4;
   color: #616161;
   border: none;
   padding: 5px 10px;
@@ -538,7 +649,7 @@ header .login-icon {
   cursor: pointer;
 }
 #todo-list .show-task-btn:hover {
-  background-color: #f4f4f4;
+  background-color: #F4F4F4;
 }
 
 /* To Do */
@@ -549,7 +660,7 @@ p[contenteditable] {
   border: 1px solid #616161;
   padding: 5px;
   outline: none;
-  background-color: #d9d9d9;
+  background-color: #D9D9D9;
   opacity: 30%;
 }
 
