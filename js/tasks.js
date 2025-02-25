@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let currentTaskId = null;
     let isEditing = false;
+    let newTaskCreated = false; // Track if a new task is created
 
     function openToDoModal(taskId) {
         let todoNode = document.querySelector("#todo");
@@ -39,7 +40,15 @@ document.addEventListener('DOMContentLoaded', function () {
         let todoNode = document.querySelector("#todo");
         if (!todoNode) return;
 
+        if (newTaskCreated && currentTaskId) {
+        delete tasks[currentTaskId];
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        newTaskCreated = false; 
+        }
+
         todoNode.classList.remove("todo-active");
+
+        updateTaskList();
     }
 
     function enableEditing() {
@@ -72,7 +81,90 @@ document.addEventListener('DOMContentLoaded', function () {
         Object.keys(tasks).forEach(taskId => {
             const task = tasks[taskId];
             const li = document.createElement("li");
-            li.textContent = task.title;
+            
+            // Apply strikethrough if the task is completed
+            if (task.checked) {
+            li.classList.add("completed"); // Add class for completed task
+        }
+
+        const taskTitle = document.createElement("span");
+        taskTitle.textContent = task.title;
+        taskTitle.classList.add("task-title");
+
+        // Custom Checkbox
+        const checkboxLabel = document.createElement("label");
+        checkboxLabel.classList.add("custom-checkbox");
+            
+        const checkboxInput = document.createElement("input");
+        checkboxInput.type = "checkbox";
+        checkboxInput.classList.add("checkbox-input");
+        checkboxInput.id = taskId;
+        checkboxInput.checked = task.checked || false; 
+
+        const checkboxIcon = document.createElement("span");
+        checkboxIcon.classList.add("checkbox-icon");
+        
+        // Add your custom icon (example using an image)
+        const customIcon = document.createElement("img");
+        customIcon.src = "/images/iconunchecked.svg"; // Replace with your icon path
+        checkboxIcon.appendChild(customIcon);
+        
+        // Hide the default checkbox (this will only affect the appearance, it will still be interactive)
+        checkboxInput.style.display = "none";
+
+        checkboxLabel.appendChild(checkboxInput);
+        checkboxLabel.appendChild(checkboxIcon);
+
+        // Event listener for checkbox click
+        checkboxInput.addEventListener("change", function() {
+            task.checked = checkboxInput.checked; // Update task's checked state
+            localStorage.setItem("tasks", JSON.stringify(tasks)); // Save the state to localStorage
+            updateTaskList(); // Update list after change
+
+    // If the task is checked (completed), trigger confetti
+    if (checkboxInput.checked) {
+      fire(0.25, {
+        spread: 26,
+        startVelocity: 55,
+      });
+  
+      fire(0.2, {
+        spread: 60,
+      });
+  
+      fire(0.35, {
+        spread: 100,
+        decay: 0.91,
+        scalar: 0.8,
+      });
+  
+      fire(0.1, {
+        spread: 120,
+        startVelocity: 25,
+        decay: 0.92,
+        scalar: 1.2,
+      });
+  
+      fire(0.1, {
+        spread: 120,
+        startVelocity: 45,
+      });
+    }
+  });
+  
+  // Confetti function
+  const count = 400,
+    defaults = {
+      origin: { y: 0.91 },
+    };
+  
+  function fire(particleRatio, opts) {
+    confetti(
+      Object.assign({}, defaults, opts, {
+        particleCount: Math.floor(count * particleRatio),
+      })
+    );
+  }
 
             const showTaskBtn = document.createElement("button");
             showTaskBtn.textContent = "Show Task Card";
@@ -89,7 +181,9 @@ document.addEventListener('DOMContentLoaded', function () {
             deleteBtn.addEventListener("click", function () {
                 deleteTask(taskId);
             });
-    
+            
+            li.appendChild(checkboxLabel);
+            li.appendChild(taskTitle);
             li.appendChild(showTaskBtn);
             li.appendChild(deleteBtn);
             taskList.appendChild(li);
@@ -99,11 +193,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function addNewTask() {
         const taskId = "task" + Date.now();
         tasks[taskId] = { title: "New Task", category: "No Category", description: "Enter task details..." };
-
         localStorage.setItem("tasks", JSON.stringify(tasks));
-
+        
+        newTaskCreated = true; // Mark that a new task was created
         updateTaskList();
         openToDoModal(taskId);
+  
     }
 
     function deleteTask(taskId) {
@@ -111,6 +206,15 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem("tasks", JSON.stringify(tasks)); 
         updateTaskList(); 
     }
+
+    document.getElementById("todo-list").addEventListener("click", function(event) {
+        if (event.target && event.target.matches(".checkbox-input")) {
+          // Handle checkbox click
+        }
+        if (event.target && event.target.matches(".show-task-btn")) {
+          // Handle show task button click
+        }
+      });
 
     document.getElementById("add-task-btn").addEventListener("click", addNewTask);
     document.querySelector(".save-btn").addEventListener("click", saveTask);
