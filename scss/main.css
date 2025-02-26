@@ -701,3 +701,7 @@ main {
   justify-content: center;
   align-items: center;
 }/*# sourceMappingURL=main.css.map */
+
+.filter-btn, .sort-btn {
+  color: #000 !important; /* Försäkrar att texten blir svart på events sidan */
+}
