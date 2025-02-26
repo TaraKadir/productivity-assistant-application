@@ -51,3 +51,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+   
+document.addEventListener("DOMContentLoaded", () => {
+    const addEventBtn = document.querySelector(".cta-button");
+    const eventPopup = document.getElementById("add-event-popup");
+    const closePopupBtn = document.querySelector(".close-popup");
+
+    if (addEventBtn && eventPopup && closePopupBtn) {
+        addEventBtn.addEventListener("click", () => {
+            eventPopup.style.display = "flex"; 
+        });
+
+        closePopupBtn.addEventListener("click", () => {
+            eventPopup.style.display = "none";
+        });
+
+        eventPopup.addEventListener("click", (event) => {
+            if (event.target === eventPopup) {
+                eventPopup.style.display = "none";
+            }
+        });
+    }
+});
+

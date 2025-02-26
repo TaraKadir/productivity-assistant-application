@@ -99,6 +99,10 @@ h1 {
     }
 }
 
+.filter-btn, .sort-btn {
+    color: #000 !important; /* Försäkrar att texten blir svart på events sidan */
+  }
+
 // Justerar filter-menyn
 .filter-menu {
     display: none;
@@ -137,7 +141,6 @@ h1 {
     text-align: left;
     display: block; 
 }
-
 
 // Anpassa checkbox och text
 .filter-menu label {
