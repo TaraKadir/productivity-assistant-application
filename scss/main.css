@@ -366,9 +366,9 @@ input::placeholder {
 
 #habit-repetition, input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: auto;
-  appearance: unset;
-  opacity: 1; /* Om de är osynliga */
+  -webkit-appearance: auto !important;
+  appearance: unset !important;
+  opacity: 1 !important; /* Om de är osynliga */
   color: orange !important;
 }
 
@@ -619,7 +619,7 @@ header .login-icon {
 /* List Container */
 /* Custom Checkbox Styles */
 .checkbox-input {
-  opacity: 1;
+  opacity: 0;
   position: absolute;
   top: 0;
   left: 0;

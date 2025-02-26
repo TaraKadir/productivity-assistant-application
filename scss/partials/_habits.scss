@@ -697,12 +697,13 @@
     }
 
     #habit-repetition, input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button
+input[type="number"]::-webkit-outer-spin-button 
  {
-    -webkit-appearance: auto;
-    appearance:unset;
-    opacity: 1; /* Om de är osynliga */
-    color: orange !important;
+    -webkit-appearance: auto !important;
+    appearance:unset !important;
+    opacity: 1 !important; /* Om de är osynliga */
+    color: orange !important; //För att hitta insidan av repetitions när jag fixar layouten.
+   
 }
     
 
