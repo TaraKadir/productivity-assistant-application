@@ -57,32 +57,32 @@ h1 {
     margin-bottom: 15px;
 }
 
-// 🔹 Filter & Sortering - Justera placering åt höger
+// Filter & Sortering - Justera placering åt höger
 .filter-sort-container {
     display: flex;
     justify-content: flex-end; /* Flyttar knapparna åt höger */
     gap: 10px;
     margin-bottom: 15px;
     width: 100%;
-    padding-right: 20px; /* Avstånd från kanten */
+    padding-right: 20px; 
     position: relative;
 }
 
-// 🔹 Filter & Sort-knappar (text inuti knapparna)
+// Filter & Sort-knappar (text inuti knapparna)
 .filter-btn, .sort-btn {
     display: flex;
     align-items: center;
-    justify-content: center; /* Centrerar text + ikon */
+    justify-content: center;
     gap: 5px;  
     background: #F8F7F4;
     border: 2px solid #ccc;
-    padding: 8px 20px; /* Lite större padding för att få plats med texten */
+    padding: 8px 20px;
     font-size: 14px;
     font-weight: 500;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s, border-color 0.3s;
-    min-width: 80px; /* Minsta bredden så texten alltid syns */
+    min-width: 80px;
 
     &:hover {
         background: rgba(255, 188, 44, 0.1);
@@ -99,7 +99,7 @@ h1 {
     }
 }
 
-// 🔹 Justerar filter-menyn
+// Justerar filter-menyn
 .filter-menu {
     display: none;
     position: absolute;
@@ -110,8 +110,8 @@ h1 {
     z-index: 1000;
     min-width: 100px;
 
-    /* 🔹 Positionera menyn korrekt under knappen */
-    top: 100%; /* Menyn hamnar direkt under filter-knappen */
+    /* Positionera menyn korrekt under knappen */
+    top: 100%;
     left: 48%;
      
     flex-direction: column;
@@ -128,29 +128,29 @@ h1 {
     visibility: visible;
 }
 
-// 🔹 Stiljusteringar för titeln
+// Stiljusteringar för titeln
 .filter-title {
     font-size: 14px;
-    color: #7D7D7D; // Gråare text
+    color: #7D7D7D; 
     font-weight: 100;
     margin-bottom: 8px;
-    text-align: left; // 🔹 Se till att texten hamnar till vänster
-    display: block; // 🔹 Säkerställer att den står ensam på en rad
+    text-align: left;
+    display: block; 
 }
 
 
-// 🔹 Anpassa checkbox och text
+// Anpassa checkbox och text
 .filter-menu label {
     display: flex;
     align-items: center;
-    gap: 10px; // Mer mellanrum mellan checkbox och text
-    font-size: 16px; // Större text
+    gap: 10px; 
+    font-size: 16px; 
     font-weight: 500;
-    color: #333; // Mörkare text för bättre läsbarhet
+    color: #333; 
     text-align: left;
 }
 
-// 🔹 Stil för checkboxarna
+// Stil för checkboxarna
 .filter-menu input[type="checkbox"] {
     width: 20px; // Större checkbox
     height: 20px;
@@ -159,12 +159,11 @@ h1 {
     cursor: pointer;
 }
 
-/* 🔹 Se till att filter-knappen har relativ position */
 .filter-btn {
-    position: relative; /* Viktigt för att filter-menyn ska hamna rätt */
+    position: relative;
 }
 
-// 🔹 Justerar "Upcoming Events" och "Finished Events"
+// Justerar "Upcoming Events" och "Finished Events"
 #events-container {
     width: 100%;
     display: flex;
@@ -178,7 +177,7 @@ h1 {
     max-width: 400px;
 }
 
-// 🔹 Anpassning för iPhone 14 Pro Max (430px bredd)
+// Anpassning för iPhone 14 Pro Max (430px bredd)
 @media (max-width: 430px) {
     .wrap-container {
         max-width: 100%;
