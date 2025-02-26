@@ -625,6 +625,16 @@ header .login-icon {
   background-image: url("/images/iconunchecked.svg");
 }
 
+/* Add this to your CSS */
+.completed .checkbox-input + .checkbox-icon {
+  background-image: url("/images/iconchecked.svg"); /* Custom checked icon */
+}
+
+.completed span {
+  text-decoration: line-through; /* Apply strikethrough to task title */
+  color: #7C7C7C; /* Optional: Change color to a greyish tone */
+}
+
 /* To Do */
 #todo-list {
   list-style: none;
