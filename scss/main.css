@@ -87,118 +87,321 @@ header .login-icon {
   background-image: url("/images/cta-button-hover.svg");
 }
 
+.events-section {
+  margin: 20px;
+  padding: 15px;
+}
+.events-section h2 {
+  font-size: 16px;
+  color: #b7b7b7;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  width: 100%;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wrap-container {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.date {
+  font-size: 16px;
+  font-weight: 100;
+  font-family: "Roboto", sans-serif;
+  color: #b7b7b7;
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-size: 35px;
+  font-weight: 200;
+  font-family: "Roboto", sans-serif;
+  font-variation-settings: "wght" 200;
+  margin-bottom: 15px;
+}
+
+.filter-sort-container {
+  display: flex;
+  justify-content: flex-end; /* Flyttar knapparna åt höger */
+  gap: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  padding-right: 20px;
+  position: relative;
+}
+
+.filter-btn, .sort-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: #F8F7F4;
+  border: 2px solid #ccc;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+  min-width: 80px;
+}
+.filter-btn:hover, .sort-btn:hover {
+  background: rgba(255, 188, 44, 0.1);
+}
+.filter-btn.active, .sort-btn.active {
+  border-color: #FFBC2C;
+  background: rgba(255, 188, 44, 0.1);
+}
+.filter-btn img, .sort-btn img {
+  width: 14px;
+  height: 14px;
+}
+
+.filter-menu {
+  display: none;
+  position: absolute;
+  background: #F8F7F4;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 100px;
+  /* Positionera menyn korrekt under knappen */
+  top: 100%;
+  left: 48%;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s;
+}
+
+.filter-menu.show {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.filter-title {
+  font-size: 14px;
+  color: #7D7D7D;
+  font-weight: 100;
+  margin-bottom: 8px;
+  text-align: left;
+  display: block;
+}
+
+.filter-menu label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  text-align: left;
+}
+
+.filter-menu input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid #B0B0B0;
+  cursor: pointer;
+}
+
+.filter-btn {
+  position: relative;
+}
+
+#events-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.events-section {
+  width: 90%;
+  max-width: 400px;
+}
+
+@media (max-width: 430px) {
+  .wrap-container {
+    max-width: 100%;
+  }
+  h1 {
+    font-size: 35px;
+  }
+}
 .main-habit {
   display: flex;
   flex-direction: column;
 }
 
-.habit-container {
-  background-color: #FBFAF7;
-  padding: 10px;
-  border-radius: 5px;
-  border-color: #ffffff;
-  width: 15rem;
-  height: 5rem;
-  margin-top: 30px;
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-:hover {
-  border-color: #FFBC2C;
+button {
+  background-color: #7C7C7C;
+  color: #fff;
+  margin-top: 50px;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
-.hidden {
-  display: none;
+button:hover {
+  background-color: #444;
 }
 
-#form-container {
+.popup {
+  display: none; /* Dold från början */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  position: relative;
   display: flex;
   flex-direction: column;
-  border: 15px solid rgb(213, 24, 24);
-  padding: 20px;
-  background-color: #FBFAF7;
-  width: 300px;
-  margin-top: 20px;
-}
-
-#habitForm {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 8px;
-  padding-top: 50px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  background-color: #FBFAF7;
-  width: 300px;
-  margin-top: 20px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
-#habitForm label,
-#habitForm input,
-#habitForm select {
-  flex: 1; /* Gör att elementen delar på utrymmet */
-  margin: 5px 0;
-}
-
-#habitForm br {
-  display: none;
-} /* Ta bort radbrytningar */
-.habit-action-btn {
-  display: flex;
-  gap: 10px;
-}
-
-.habit-action-btn {
-  display: flex;
-  justify-content: space-between;
-  width: 100%; /* tar upp hela bredden */
-  margin-top: 10px;
-}
-
-#cancel-habit-btn, #add-habit-button {
-  flex: 1; /* Gör att knapparna delar på utrymmet  */
-  border-radius: 6px;
-  border: none;
-  text-align: center;
-}
-
-#cancel-habit-btn {
-  border: #e74c3c 5px;
-}
-
-#add-habit-button {
-  border: #00ecad 5px;
-}
-
-.number-input {
-  display: flex;
+  text-align: left;
+  background: #FBFAF7;
+  margin: auto;
+  padding: 25px;
   gap: 5px;
+  border-radius: 20px;
+  width: 300px;
 }
-.number-input button {
-  background-color: #FBFAF7;
-  border: none;
-  width: 30px;
-  height: 30px;
-  font-size: 20px;
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 15px;
   cursor: pointer;
-  border-radius: 5px;
 }
-.number-input input {
-  width: 50px;
-  text-align: center;
+
+.habit-card {
+  background: #FBFAF7;
+  padding: 15px;
+  margin: 250px auto;
+  width: 250px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #616161;
+  text-align: left;
+}
+
+input {
+  padding-top: 1px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 8px;
+  border-style: none;
+  font-size: 16px;
+  height: 100%;
+}
+
+select {
+  display: flex;
+  width: 100%; 
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: transparent;
+  font-size: 16px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+option {
+  font-size: 16px; 
+  padding: 8px; 
+}
+
+select:valid {
+  color: rgb(255, 136, 0);
+}
+
+h1 {
+  color: #616161;
+  font-size: 20px;
 }
 
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-body {
+tasksbody {
   font-family: "Roboto", sans-serif;
+  background-color: #f3f2ee;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+  width: 100%;
+}
+header .logo {
+  width: 50px;
+}
+header .login-icon {
+  margin-top: 5%;
+  margin-left: 70%;
+  width: 30px;
+}
+
+.date {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 200;
+  margin: 10px 0;
 }
 
 .center {
@@ -208,23 +411,26 @@ body {
   transform: translate(-50%, -50%);
 }
 
+/* Show Task Card */
 .todo {
   position: fixed;
   top: 100vh;
-  left: 0px;
+  left: 0;
   width: 100%;
   height: 100%;
+  transition: top 300ms ease-in-out;
+  z-index: 1000;
 }
 
 .todo .overlay {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
-  transition: opacity 100ms ease-in-out 200ms;
+  transition: opacity 300ms ease-in-out;
 }
 
 .todo .todo-content {
@@ -240,24 +446,27 @@ body {
   opacity: 0;
   box-shadow: 0px 2px 2px 5px rgba(0, 0, 0, 0.05);
   transition: all 300ms ease-in-out;
+  z-index: 1010;
 }
 
-.todo .todo-content h1 {
-  margin: 10px 0px;
+.todo .todo-content h1.todo-title {
+  margin: 10px 0;
   font-size: 20px;
   color: #616161;
   text-align: left;
 }
 
-.todo .todo-content h2 {
-  margin: 10px 0px;
+.todo .todo-content h2.category-title {
+  margin: 10px 0;
   font-size: 16px;
   color: #616161;
   text-align: left;
+  font-weight: bold;
+  display: block;
 }
 
-.todo .todo-content p {
-  margin: 15px 0px;
+.todo .todo-content p.todo-description {
+  margin: 15px 0;
   color: #616161;
   font-size: 14px;
   text-align: left;
@@ -265,8 +474,8 @@ body {
 
 .todo .todo-content .controls {
   display: flex;
-  justify-content: space-between;
-  margin: 20px 0px 0px;
+  justify-content: flex-end;
+  margin: 20px 0 0;
 }
 
 .todo .todo-content .controls button {
@@ -286,16 +495,22 @@ body {
 .todo .todo-content .controls .save-btn {
   background: #7C7C7C;
   color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 .todo-active {
-  top: 0px;
+  top: 0;
   transition: top 0ms ease-in-out 0ms;
+  display: block;
 }
 
 .todo-active .overlay {
   opacity: 1;
-  transition: all 300ms ease-in-out;
+  transition: all 0ms ease-in-out 0ms;
 }
 
 .todo-active .todo-content {
@@ -303,7 +518,8 @@ body {
   opacity: 1;
 }
 
-/* Edit Icon styling */
+/* Show Task Card */
+/* Edit Task */
 .edit-icon {
   cursor: pointer;
   font-size: 20px;
@@ -319,9 +535,10 @@ body {
   color: #ff9900;
 }
 
-/* Cross icon styling */
+/* Edit Task */
+/* Close Task Button */
 .close-icon {
-  color: #616161; /* You can change the color */
+  color: #616161;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -330,11 +547,93 @@ body {
   transition: color 0.3s ease;
 }
 
-.close-icon:hover {
-  color: #ff0000; /* Change color on hover */
+/* Close Task Button */
+/* Add Task Button */
+.add-task-btn {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #7C7C7C;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+.add-task-btn:hover {
+  background-color: #5a5a5a;
 }
 
-/* Editable elements styling */
+/* Add Task Button */
+/* Delete Task Button*/
+.delete-task-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 10px;
+  position: relative;
+  z-index: 500;
+}
+.delete-task-btn .delete-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+.delete-task-btn:hover .delete-icon {
+  opacity: 1;
+}
+
+/* Delete Task Button */
+/* List Container */
+.list-container {
+  display: block;
+  background-color: #FBFAF7;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  min-height: 10px;
+  min-width: 10px;
+  max-width: 350px;
+  margin: 10px auto;
+  margin-top: 10px auto;
+  border: 1px #D9D9D9;
+}
+
+/* List Container */
+/* To Do */
+#todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#todo-list li {
+  background-color: #FBFAF7;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#todo-list .show-task-btn {
+  background-color: #F4F4F4;
+  color: #616161;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#todo-list .show-task-btn:hover {
+  background-color: #F4F4F4;
+}
+
+/* To Do */
+/* Edit modal */
 h1[contenteditable], h2[contenteditable], p[contenteditable] {
   border: 1px solid #616161;
   padding: 5px;
@@ -343,6 +642,50 @@ h1[contenteditable], h2[contenteditable], p[contenteditable] {
   opacity: 30%;
 }
 
+/* Edit modal */
+/* Footer-stilar */
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* height: $nav-height; */
+  border-top: 1px solid #ddd;
+}
+.bottom-nav .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  text-decoration: none;
+  color: #000000;
+  /* margin-top: 18px; */
+}
+.bottom-nav .nav-item img {
+  width: 24px;
+  height: 24px;
+}
+.bottom-nav .cta-button {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background-image: url("/images/cta-button.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+.bottom-nav .cta-button:hover {
+  background-image: url("/images/cta-button-hover.svg");
+}
+
+/* Footer-stilar */
 body {
   background-color: #F3F2EE;
   color: #000000;
@@ -358,3 +701,7 @@ main {
   justify-content: center;
   align-items: center;
 }/*# sourceMappingURL=main.css.map */
+
+.filter-btn, .sort-btn {
+  color: #000 !important; /* Försäkrar att texten blir svart på events sidan */
+}
