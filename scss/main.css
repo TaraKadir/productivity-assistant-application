@@ -69,7 +69,8 @@ header .login-icon {
   width: 24px;
   height: 24px;
 }
-.bottom-nav .cta-button {
+.bottom-nav .cta-button, .bottom-nav button {
+  background-color: transparent;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -286,7 +287,7 @@ button:hover {
 }
 
 .popup {
-  display: none; /* Dold från början */
+  display: none; /* Dold från början - markera ur om jag vill redigera */
   position: fixed;
   top: 0;
   left: 0;
@@ -319,11 +320,16 @@ button:hover {
 
 .habit-card {
   background: #FBFAF7;
-  padding: 15px;
-  margin: 250px auto;
+  padding: 35px;
+  margin: 80px auto;
   width: 250px;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: #616161;
+  font-size: 20px;
 }
 
 h2 {
@@ -341,39 +347,57 @@ input {
   border-radius: 8px;
   border-style: none;
   font-size: 16px;
-  height: 100%;
+  font-family: "Roboto", sans-serif;
+  color: #3f3f3f;
+  height: auto;
+  min-height: 30px; /* Justera vid behov */
+  -webkit-appearance: auto;
+     -moz-appearance: auto;
+          appearance: auto; /* Se till att input får sin standardstil */
+}
+
+input::-moz-placeholder {
+  color: #9D9D9D;
+}
+
+input::placeholder {
+  color: #9D9D9D;
+}
+
+#habit-repetition, input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: auto;
+  appearance: unset;
+  opacity: 1; /* Om de är osynliga */
+  color: orange !important;
 }
 
 select {
   display: flex;
-  width: 100%; 
+  width: 100%; /* dropdownen tar upp bredden */
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: none;
   background: transparent;
   font-size: 16px;
   box-sizing: border-box;
   position: relative;
-}
-
-option {
-  font-size: 16px; 
-  padding: 8px; 
+  font-family: "Roboto", sans-serif;
+  color: #9D9D9D;
 }
 
 select:valid {
-  color: rgb(255, 136, 0);
+  color: #3f3f3f;
 }
 
-h1 {
-  color: #616161;
-  font-size: 20px;
+option {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px; /* font-size dropdownen */
+  padding: 8px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.habit-list-container {
+  margin-top: 2px;
 }
 
 tasksbody {
@@ -412,6 +436,7 @@ header .login-icon {
   transform: translate(-50%, -50%);
 }
 
+/* Show Task Card */
 .todo {
   position: fixed;
   top: 100vh;
@@ -421,7 +446,6 @@ header .login-icon {
   transition: top 300ms ease-in-out;
   z-index: 1000;
 }
-
 .todo .overlay {
   position: absolute;
   top: 0;
@@ -432,7 +456,6 @@ header .login-icon {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
 }
-
 .todo .todo-content {
   position: absolute;
   top: 50%;
@@ -440,7 +463,7 @@ header .login-icon {
   transform: translate(-50%, -50%) scale(1.15);
   width: 95%;
   max-width: 350px;
-  background: #FBFAF7;
+  background: #fbfaf7;
   padding: 25px;
   border-radius: 20px;
   opacity: 0;
@@ -448,14 +471,12 @@ header .login-icon {
   transition: all 300ms ease-in-out;
   z-index: 1010;
 }
-
 .todo .todo-content h1.todo-title {
   margin: 10px 0;
   font-size: 20px;
   color: #616161;
   text-align: left;
 }
-
 .todo .todo-content h2.category-title {
   margin: 10px 0;
   font-size: 16px;
@@ -464,20 +485,17 @@ header .login-icon {
   font-weight: bold;
   display: block;
 }
-
 .todo .todo-content p.todo-description {
   margin: 15px 0;
   color: #616161;
   font-size: 14px;
   text-align: left;
 }
-
 .todo .todo-content .controls {
   display: flex;
   justify-content: flex-end;
   margin: 20px 0 0;
 }
-
 .todo .todo-content .controls button {
   padding: 10px 20px;
   border: none;
@@ -486,14 +504,12 @@ header .login-icon {
   border-radius: 20px;
   cursor: pointer;
 }
-
 .todo .todo-content .controls {
   background: transparent;
-  color: #7C7C7C;
+  color: #7c7c7c;
 }
-
 .todo .todo-content .controls .save-btn {
-  background: #7C7C7C;
+  background: #7c7c7c;
   color: #fff;
   padding: 10px 20px;
   border-radius: 20px;
@@ -501,23 +517,22 @@ header .login-icon {
   border: none;
   outline: none;
 }
-
-.todo-active {
+.todo.todo-active {
   top: 0;
   transition: top 0ms ease-in-out 0ms;
   display: block;
 }
-
-.todo-active .overlay {
+.todo.todo-active .overlay {
   opacity: 1;
   transition: all 0ms ease-in-out 0ms;
 }
-
-.todo-active .todo-content {
+.todo.todo-active .todo-content {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
 
+/* Show Task Card */
+/* Edit Task */
 .edit-icon {
   cursor: pointer;
   font-size: 20px;
@@ -528,11 +543,12 @@ header .login-icon {
   z-index: 10;
   transition: color 0.3s ease;
 }
-
 .edit-icon:hover {
   color: #ff9900;
 }
 
+/* Edit Task */
+/* Close Task Button */
 .close-icon {
   color: #616161;
   position: absolute;
@@ -543,6 +559,8 @@ header .login-icon {
   transition: color 0.3s ease;
 }
 
+/* Close Task Button */
+/* Add Task Button */
 .add-task-btn {
   display: block;
   width: -moz-fit-content;
@@ -550,7 +568,7 @@ header .login-icon {
   margin: 20px auto;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #7C7C7C;
+  background-color: #7c7c7c;
   color: white;
   border: none;
   border-radius: 10px;
@@ -561,6 +579,8 @@ header .login-icon {
   background-color: #5a5a5a;
 }
 
+/* Add Task Button */
+/* Delete Task Button */
 .delete-task-btn {
   background: none;
   border: none;
@@ -580,9 +600,11 @@ header .login-icon {
   opacity: 1;
 }
 
+/* Delete Task Button */
+/* List Container */
 .list-container {
   display: block;
-  background-color: #FBFAF7;
+  background-color: #fbfaf7;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -591,16 +613,63 @@ header .login-icon {
   max-width: 350px;
   margin: 10px auto;
   margin-top: 10px auto;
-  border: 1px #D9D9D9;
+  border: 1px #d9d9d9;
 }
 
+/* List Container */
+/* Custom Checkbox Styles */
+.checkbox-input {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Style the custom checkbox */
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Style the custom icon */
+.checkbox-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-size: contain; /* Make sure the icon is contained */
+  background-repeat: no-repeat;
+  transition: contain;
+}
+
+.checkbox-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+/* Change the icon's appearance when checked */
+.checkbox-input:checked + .checkbox-icon {
+  background-image: url("/images/iconchecked.svg"); /* Replace with checked state icon */
+}
+
+/* Unchecked State */
+.checkbox-input:not(:checked) + .checkbox-icon {
+  background-image: url("/images/iconunchecked.svg");
+}
+
+/* To Do */
 #todo-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 #todo-list li {
-  background-color: #FBFAF7;
+  background-color: #fbfaf7;
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 10px;
@@ -609,7 +678,7 @@ header .login-icon {
   align-items: center;
 }
 #todo-list .show-task-btn {
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   color: #616161;
   border: none;
   padding: 5px 10px;
@@ -617,17 +686,22 @@ header .login-icon {
   cursor: pointer;
 }
 #todo-list .show-task-btn:hover {
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
 }
 
-h1[contenteditable], h2[contenteditable], p[contenteditable] {
+/* To Do */
+/* Edit modal */
+h1[contenteditable],
+h2[contenteditable],
+p[contenteditable] {
   border: 1px solid #616161;
   padding: 5px;
   outline: none;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   opacity: 30%;
 }
 
+/* Edit modal */
 /* Footer-stilar */
 .bottom-nav {
   display: flex;
@@ -670,6 +744,7 @@ h1[contenteditable], h2[contenteditable], p[contenteditable] {
   background-image: url("/images/cta-button-hover.svg");
 }
 
+/* Footer-stilar */
 body {
   background-color: #F3F2EE;
   color: #000000;
