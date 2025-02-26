@@ -545,21 +545,27 @@
 
 // *{all:unset}
 
+// *{appearance: auto;}
 
 
-  // .main-habit{
-  //   display: flex;
-  //   flex-direction: column;
-  // }
+  .main-habit{
+    display: flex;
+    flex-direction: column;
+    // border: 10px dotted red;
+
+  }
 
       .action-buttons{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
 
+
       }
 
-
+      //  .cta-button, button{
+      //   background-color: transparent ;
+      // }
     button{
       background-color: #7C7C7C;
       color: #fff;
@@ -570,7 +576,7 @@
       font-size: 15px;
       border-radius: 20px;
       cursor: pointer;
-      
+
     }
 
     button:hover{
@@ -580,7 +586,7 @@
     .popup{
 
 
-      display: none; /* Dold från början */
+      display: none; /* Dold från början - markera ur om jag vill redigera */
       position: fixed;
       top: 0;
       left: 0;
@@ -590,12 +596,6 @@
       justify-content: center;
       align-items: center;
 
-      // display: none;
-      // position: fixed;
-      // top: 30vh;
-      // left: 0;
-      // width: 100%;
-      // height: 100%;
 
     }
 
@@ -646,13 +646,20 @@
     .habit-card{
 
       background:#FBFAF7;
-      padding: 15px;
-      margin: 250px auto;
+      padding: 35px;
+      margin: 80px auto;
+      // margin-top: 150px;
       width: 250px;
       border-radius: 20px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
 
+    }
+
+
+    h1{
+      color: #616161;
+      font-size: 20px;
     }
 
 
@@ -672,34 +679,114 @@
       border-radius: 8px;
       border-style: none;
       font-size: 16px;
-      height: 100%;
+      // height: 100%;
+      font-family: $primary-font;
+      color: #3f3f3f;
+
+      height: auto;
+      min-height: 30px; /* Justera vid behov */
+      appearance: auto; /* Se till att input får sin standardstil */
+ 
 
     }
+
+ 
+   input::placeholder{
+      color: #9D9D9D;
+
+    }
+
+    #habit-repetition, input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button
+ {
+    -webkit-appearance: auto;
+    appearance:unset;
+    opacity: 1; /* Om de är osynliga */
+    color: orange !important;
+}
+    
+
+    // input[type=number]::-webkit-inner-spin-button {
+    //   opacity: 1;
+    // }
+
+    
+// input#habit-repetition{
+//   // color: palevioletred;
+// }
+
+// input#habit-repetition[type="number"] {
+//     width: 100%; /* Testa en större bredd */
+//     padding-right: 20px; /* Se till att det finns utrymme */
+//     color: palevioletred;
+// }
+
+
+// #habit-repetition input {
+//   flex-grow: 1;
+//   font-size: 18px;
+//   background: #fff;
+//   border: none;
+//   outline: none;
+//   padding: 0.5rem;
+// }
+//  #habit-repetition input:focus-within {
+//   border-color: #4f7df3;
+// select#habit-category{
+//   width: 800px; /
+//   padding-right: 20px;
+//   color: palevioletred;
+// }
+
+
+
+
+
+
+      //  input[type="number"]::-webkit-inner-spin-button {
+      //   cursor: pointer;
+
+// select#habit-priority{
+//       input[type="number"]::-webkit-inner-spin-button {
+//         cursor: pointer;
+
+//       }}
 
 
 
 
     select {
       display: flex;
-      width: 100%; /* Säkerställer att dropdownen tar upp hela bredden av föräldraelementet */
+      width: 100%; /* dropdownen tar upp bredden */
       padding: 8px;
       border-radius: 8px;
-      border: 1px solid #ccc;
+      // border: 1px solid #ccc;
+      border: none;
       background: transparent;
       font-size: 16px;
       box-sizing: border-box; // För att padding och border inte ökar bredden
       position: relative;
-      
-
+      font-family: $primary-font;
+      color: #9D9D9D;
+      // color: green;
+    }
+    select:valid {
+      // color: rgb(255, 136, 0); //ändra till svart sen
+      color:#3f3f3f;
     }
 
     option {
-      font-size: 16px; /* Sätter textstorleken på alternativen i dropdownen */
-      padding: 8px; /* Justerar padding i alternativen för bättre läsbarhet */
+
+      font-family: $primary-font;
+      font-size: 16px; /* font-size dropdownen */
+      padding: 8px; 
     }
 
+    .habit-list-container{
+      margin-top: 2px;
+    }
 
-
+   
     // select {
     //   position: relative;
     //   border: #FBFAF7; //Tar bort kanten runt priority &
@@ -722,24 +809,15 @@
 
 
 
-    select:valid {
-      color: rgb(255, 136, 0); //ändra till svart sen
-    }
-
-
-    h1{
-      color: #616161;
-      font-size: 20px;
-    }
 
 
 
-  // // Hjälp av tara: 
+  // // Hjälp av tara:
   // top:100%;
   // left:48%;
 
 
-  // 2. 
+  // 2.
   // // :small_blue_diamond: Justerar filter-menyn
   // .filter-menu {
   //   display: none;
