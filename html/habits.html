@@ -11,6 +11,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Habits - Productivity Assistant Application</title>
+    <!-- <link rel="stylesheet" href="/scss/main.css" /> -->
     <link rel="stylesheet" href="/scss/main.css" />
 
     <script src="/js/habits.js" defer></script>
@@ -46,7 +47,7 @@
               <!-- <div class="popup-inner-content"></div> -->
               
 
-              <label for="habit-tit"><h2>Title:</h2></label>
+              <label for="habit-titles"><h2>Title:</h2></label>
               <input type="text" id="habit-title" placeholder="Enter Habit title">
 
               <label for="habit-prio"><h2>Priority:</h2></label>
@@ -63,7 +64,7 @@
 
               <label for="habit-cat"><h2>Category:</h2></label>
               <select id="habit-category" required>
-                <option disabled selected hidden>Choose category</option>
+                <option value="" disabled selected hidden>Choose category</option>
                 <option value="health">Health</option>
                 <option value="study">Study</option>
                 <option value="clean">Clean</option>
@@ -101,6 +102,7 @@
 
 
 
+
               <div class="button-space">
               <div class="action-buttons">
                 <button id="cancel-btn">Cancel</button>
@@ -111,8 +113,52 @@
             </div>
          </div>
 
-         <div id="habit-list"></div>
 
+
+<!-- TARAS FILTER / SORT -->
+
+
+<!-- <div class="filter-sort-container"> -->
+  <!--  Filter-knapp -->
+  <!-- <button class="dropdown-btn filter-btn" id="filter-btn">
+    Filter <img src="/images/filter-up.svg" alt="Filter icon" />
+  </button> -->
+
+  <!-- Flytta filter-menyn direkt under knappen -->
+  <!-- <div id="filter-menu" class="filter-menu">
+    <span class="filter-title">Filter</span>
+    <label>
+      <input type="checkbox" id="filter-finished" />
+      Finished
+    </label>
+    <label>
+      <input type="checkbox" id="filter-upcoming" />
+      Upcoming
+    </label>
+  </div> -->
+
+  <!--  Sorteringsknapp -->
+  <!-- <button class="dropdown-btn sort-btn" id="sort-btn">
+    Sort <img src="/images/sort-arrows.svg" alt="Sort icon" />
+  </button>
+</div>
+
+<div id="events-container">
+  <section class="events-section" id="upcoming-section">
+    <h2>Upcoming Events</h2>
+    <div id="upcoming-events" class="events-list"></div>
+  </section>
+
+  <section class="events-section" id="finished-section">
+    <h2>Finished Events</h2>
+    <div id="finished-events" class="events-list"></div>
+  </section>
+</div> -->
+</main>
+
+        <div class="habit-list-container">
+         <div id="habit-list"></div>
+        </div>
 
 
 

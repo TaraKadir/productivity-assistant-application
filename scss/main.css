@@ -69,7 +69,8 @@ header .login-icon {
   width: 24px;
   height: 24px;
 }
-.bottom-nav .cta-button {
+.bottom-nav .cta-button, .bottom-nav button {
+  background-color: transparent;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -284,7 +285,7 @@ button:hover {
 }
 
 .popup {
-  display: none; /* Dold från början */
+  display: none; /* Dold från början - markera ur om jag vill redigera */
   position: fixed;
   top: 0;
   left: 0;
@@ -317,11 +318,16 @@ button:hover {
 
 .habit-card {
   background: #FBFAF7;
-  padding: 15px;
-  margin: 250px auto;
+  padding: 35px;
+  margin: 80px auto;
   width: 250px;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: #616161;
+  font-size: 20px;
 }
 
 h2 {
@@ -339,33 +345,57 @@ input {
   border-radius: 8px;
   border-style: none;
   font-size: 16px;
-  height: 100%;
+  font-family: "Roboto", sans-serif;
+  color: #3f3f3f;
+  height: auto;
+  min-height: 30px; /* Justera vid behov */
+  -webkit-appearance: auto;
+     -moz-appearance: auto;
+          appearance: auto; /* Se till att input får sin standardstil */
+}
+
+input::-moz-placeholder {
+  color: #9D9D9D;
+}
+
+input::placeholder {
+  color: #9D9D9D;
+}
+
+#habit-repetition, input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: auto !important;
+  appearance: unset !important;
+  opacity: 1 !important; /* Om de är osynliga */
+  color: orange !important;
 }
 
 select {
   display: flex;
-  width: 100%; /* Säkerställer att dropdownen tar upp hela bredden av föräldraelementet */
+  width: 100%; /* dropdownen tar upp bredden */
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: none;
   background: transparent;
   font-size: 16px;
   box-sizing: border-box;
   position: relative;
-}
-
-option {
-  font-size: 16px; /* Sätter textstorleken på alternativen i dropdownen */
-  padding: 8px; /* Justerar padding i alternativen för bättre läsbarhet */
+  font-family: "Roboto", sans-serif;
+  color: #9D9D9D;
 }
 
 select:valid {
-  color: rgb(255, 136, 0);
+  color: #3f3f3f;
 }
 
-h1 {
-  color: #616161;
-  font-size: 20px;
+option {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px; /* font-size dropdownen */
+  padding: 8px;
+}
+
+.habit-list-container {
+  margin-top: 2px;
 }
 
 tasksbody {
@@ -404,6 +434,7 @@ header .login-icon {
   transform: translate(-50%, -50%);
 }
 
+/* Show Task Card */
 /* Show Task Card */
 .todo {
   position: fixed;
@@ -517,6 +548,8 @@ header .login-icon {
 
 /* Edit Task */
 /* Close Task Button */
+/* Edit Task */
+/* Close Task Button */
 .close-icon {
   color: #616161;
   position: absolute;
@@ -548,7 +581,7 @@ header .login-icon {
 }
 
 /* Add Task Button */
-/* Delete Task Button */
+/* Delete Task Button*/
 .delete-task-btn {
   background: none;
   border: none;
@@ -631,6 +664,8 @@ header .login-icon {
 }
 
 /* To Do */
+/* List Container */
+/* To Do */
 #todo-list {
   list-style: none;
   padding: 0;
@@ -669,6 +704,7 @@ p[contenteditable] {
   opacity: 30%;
 }
 
+/* Edit modal */
 /* Edit modal */
 /* Footer-stilar */
 .bottom-nav {
@@ -712,6 +748,7 @@ p[contenteditable] {
   background-image: url("/images/cta-button-hover.svg");
 }
 
+/* Footer-stilar */
 /* Footer-stilar */
 body {
   background-color: #F3F2EE;
