@@ -4,6 +4,7 @@
 .bottom-nav {
   display: flex;
   justify-content: space-around;
+  background-color: $primary-backgroundcolor;      
   align-items: center;
   position: fixed;
   bottom: 0;
