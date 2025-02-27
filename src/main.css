@@ -148,24 +148,24 @@ h1 {
   gap: 10px;
   margin-bottom: 15px;
   width: 100%;
-  padding-right: 20px; /* Avstånd från kanten */
+  padding-right: 20px;
   position: relative;
 }
 
 .filter-btn, .sort-btn {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centrerar text + ikon */
+  justify-content: center;
   gap: 5px;
   background: #F8F7F4;
   border: 2px solid #ccc;
-  padding: 8px 20px; /* Lite större padding för att få plats med texten */
+  padding: 8px 20px;
   font-size: 14px;
   font-weight: 500;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s, border-color 0.3s;
-  min-width: 80px; /* Minsta bredden så texten alltid syns */
+  min-width: 80px;
 }
 .filter-btn:hover, .sort-btn:hover {
   background: rgba(255, 188, 44, 0.1);
@@ -188,8 +188,8 @@ h1 {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   min-width: 100px;
-  /* 🔹 Positionera menyn korrekt under knappen */
-  top: 100%; /* Menyn hamnar direkt under filter-knappen */
+  /* Positionera menyn korrekt under knappen */
+  top: 100%;
   left: 48%;
   flex-direction: column;
   gap: 12px;
@@ -232,9 +232,8 @@ h1 {
   cursor: pointer;
 }
 
-/* 🔹 Se till att filter-knappen har relativ position */
 .filter-btn {
-  position: relative; /* Viktigt för att filter-menyn ska hamna rätt */
+  position: relative;
 }
 
 #events-container {
