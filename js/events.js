@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-    setupFilterMenu();    // Hanterar filter-menyn
-    setupSorting();       // Hanterar sortering av events
-    setupEventPopup();    // Hanterar popup-fönstret
-    setupSaveEvent();     // Hanterar sparande av events
+    setupFilterMenu();
+    setupSorting();
+    setupEventPopup();
+    setupSaveEvent();
+    loadEventsFromLocalStorage(); // Hämta eventen från localStorage vid sidladdning
 });
 
 let editingEvent = null; // Håller koll på vilket event som redigeras
 
-// Funktionerna för att hantera filter-menyn
+// Funktionerna för filter-menyn
 function setupFilterMenu() {
     const filterBtn = document.getElementById("filter-btn");
     const filterMenu = document.getElementById("filter-menu");
@@ -25,7 +26,6 @@ function setupFilterMenu() {
         filterBtn.classList.toggle("active");
     });
 
-    // Klick utanför filter-menyn stänger den
     document.addEventListener("click", (event) => {
         if (!filterMenu.contains(event.target) && !filterBtn.contains(event.target)) {
             filterMenu.classList.remove("show");
@@ -33,7 +33,6 @@ function setupFilterMenu() {
         }
     });
 
-    // Filter-funktion för att visa/dölja events
     if (filterFinished && filterUpcoming) {
         filterFinished.addEventListener("change", function () {
             finishedSection.style.display = this.checked ? "block" : "none";
@@ -66,21 +65,20 @@ function setupSorting() {
 // Funktion för att hantera popup-fönstret
 function setupEventPopup() {
     const eventPopup = document.getElementById("event-popup");
-    const openPopupBtn = document.querySelector(".cta-button"); // Plus-knappen
+    const openPopupBtn = document.querySelector(".cta-button");
     const closePopupBtn = document.querySelector(".event-close-popup");
 
     openPopupBtn.addEventListener("click", () => {
-        editingEvent = null; // Nollställ redigering
-        clearEventForm(); // Rensa fälten
+        editingEvent = null;
+        clearEventForm();
         eventPopup.style.display = "flex";
     });
 
     closePopupBtn.addEventListener("click", () => {
         eventPopup.style.display = "none";
-        clearEventForm(); // Rensa fälten vid stängning
+        clearEventForm();
     });
 
-    // Klick utanför popupen stänger den
     window.addEventListener("click", (event) => {
         if (event.target === eventPopup) {
             eventPopup.style.display = "none";
@@ -89,13 +87,12 @@ function setupEventPopup() {
     });
 }
 
-// Funktion för att spara ett event
+// Funktion för att spara/redigera event och lagra i `localStorage`
 function setupSaveEvent() {
     const saveEventBtn = document.getElementById("save-event-btn");
     const eventTitle = document.getElementById("event-title");
     const eventDescription = document.getElementById("event-description");
     const eventDate = document.getElementById("due-date");
-    const upcomingEventsList = document.getElementById("upcoming-events");
     
     saveEventBtn.addEventListener("click", () => {
         const title = eventTitle.value.trim();
@@ -107,49 +104,89 @@ function setupSaveEvent() {
             return;
         }
 
+        let events = JSON.parse(localStorage.getItem("events")) || [];
+
         if (editingEvent) {
             // Uppdatera befintligt event
-            editingEvent.querySelector(".event-title").textContent = title;
-            editingEvent.querySelector(".event-date").textContent = date;
-            editingEvent.querySelector(".event-description").textContent = description;
-            editingEvent = null; // Nollställ redigering
+            editingEvent.title = title;
+            editingEvent.description = description;
+            editingEvent.date = date;
+            editingEvent = null;
         } else {
-            // Skapa nytt event-kort
-            const eventCard = document.createElement("div");
-            eventCard.classList.add("event-card");
-            eventCard.innerHTML = `
-                <h3 class="event-title">${title}</h3>
-                <p class="event-date">${date}</p>
-                <p class="event-description">${description}</p>
-                <button class="edit-event">✏️</button>
-                <button class="delete-event">🗑</button>
-            `;
-
-            // Lägg till eventet i listan
-            upcomingEventsList.appendChild(eventCard);
-
-            // Lägg till redigering & radera-funktion
-            eventCard.querySelector(".edit-event").addEventListener("click", () => openEditEvent(eventCard));
-            eventCard.querySelector(".delete-event").addEventListener("click", () => eventCard.remove());
+            // Skapa nytt event-objekt
+            const newEvent = {
+                id: Date.now(),
+                title,
+                description,
+                date
+            };
+            events.push(newEvent);
         }
 
-        // Rensa fälten efter sparning
+        localStorage.setItem("events", JSON.stringify(events));
+        loadEventsFromLocalStorage();
         clearEventForm();
-
-        // Stäng popupen efter sparning
         document.getElementById("event-popup").style.display = "none";
     });
 }
 
-// Funktion för att öppna popupen och redigera ett event
-function openEditEvent(eventCard) {
-    editingEvent = eventCard; // Spara vilket event som redigeras
+// Funktion för att ladda in event från `localStorage`
+function loadEventsFromLocalStorage() {
+    const upcomingEventsList = document.getElementById("upcoming-events");
+    const finishedEventsList = document.getElementById("finished-events");
 
-    document.getElementById("event-title").value = eventCard.querySelector(".event-title").textContent;
-    document.getElementById("event-description").value = eventCard.querySelector(".event-description").textContent;
-    document.getElementById("due-date").value = eventCard.querySelector(".event-date").textContent;
+    upcomingEventsList.innerHTML = "";
+    finishedEventsList.innerHTML = "";
+
+    let events = JSON.parse(localStorage.getItem("events")) || [];
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    events.forEach(event => {
+        const eventDateObj = new Date(event.date);
+        const eventCard = document.createElement("div");
+        eventCard.classList.add("event-card");
+        eventCard.innerHTML = `
+            <h3 class="event-title">${event.title}</h3>
+            <p class="event-date">${event.date}</p>
+            <p class="event-description">${event.description}</p>
+            <button class="edit-event">✏️</button>
+            <button class="delete-event">🗑</button>
+        `;
+
+        // Hantera färdigställda event
+        if (eventDateObj < today) {
+            eventCard.classList.add("finished-event");
+            eventCard.querySelector(".event-title").style.textDecoration = "line-through";
+            eventCard.querySelector(".event-title").style.color = "#7D7D7D";
+            finishedEventsList.appendChild(eventCard);
+        } else {
+            upcomingEventsList.appendChild(eventCard);
+        }
+
+        // Lägg till funktioner för att redigera och ta bort
+        eventCard.querySelector(".edit-event").addEventListener("click", () => openEditEvent(event));
+        eventCard.querySelector(".delete-event").addEventListener("click", () => deleteEvent(event.id));
+    });
+}
+
+// Funktion för att öppna popup och redigera ett event
+function openEditEvent(event) {
+    editingEvent = event;
+
+    document.getElementById("event-title").value = event.title;
+    document.getElementById("event-description").value = event.description;
+    document.getElementById("due-date").value = event.date;
 
     document.getElementById("event-popup").style.display = "flex";
+}
+
+// Funktion för att ta bort ett event och uppdatera `localStorage`
+function deleteEvent(eventId) {
+    let events = JSON.parse(localStorage.getItem("events")) || [];
+    events = events.filter(event => event.id !== eventId);
+    localStorage.setItem("events", JSON.stringify(events));
+    loadEventsFromLocalStorage();
 }
 
 // Funktion för att rensa fälten i event-formuläret
@@ -157,5 +194,5 @@ function clearEventForm() {
     document.getElementById("event-title").value = "";
     document.getElementById("event-description").value = "";
     document.getElementById("due-date").value = "";
-    editingEvent = null; // Nollställ redigering
+    editingEvent = null;
 }
