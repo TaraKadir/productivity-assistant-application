@@ -69,7 +69,8 @@ header .login-icon {
   width: 24px;
   height: 24px;
 }
-.bottom-nav .cta-button {
+.bottom-nav .cta-button, .bottom-nav button {
+  background-color: transparent;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -179,6 +180,10 @@ h1 {
   height: 14px;
 }
 
+.filter-btn, .sort-btn {
+  color: #000 !important; /* Försäkrar att texten blir svart på events sidan TA INTE BORT!!*/
+}
+
 .filter-menu {
   display: none;
   position: absolute;
@@ -249,6 +254,78 @@ h1 {
   max-width: 400px;
 }
 
+.event-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.event-popup .event-popup-content {
+  background: #FBFAF7;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  width: 320px;
+  position: relative;
+}
+.event-popup .event-close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.event-popup input, .event-popup textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  background: #F8F7F4;
+}
+.event-popup textarea {
+  height: 80px;
+  resize: none;
+}
+.event-popup .event-due-date {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.event-popup .event-due-date label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 8px;
+  color: #7D7D7D;
+}
+.event-popup .event-due-date input {
+  border: none;
+  background: #F8F7F4;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.event-popup button {
+  background: #FFBC2C;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
 @media (max-width: 430px) {
   .wrap-container {
     max-width: 100%;
@@ -257,6 +334,11 @@ h1 {
     font-size: 35px;
   }
 }
+.main-habit {
+  display: flex;
+  flex-direction: column;
+}
+
 .action-buttons {
   display: flex;
   flex-direction: row;
@@ -280,7 +362,7 @@ button:hover {
 }
 
 .popup {
-  display: none; /* Dold från början */
+  display: none; /* Dold från början - markera ur om jag vill redigera */
   position: fixed;
   top: 0;
   left: 0;
@@ -313,11 +395,16 @@ button:hover {
 
 .habit-card {
   background: #FBFAF7;
-  padding: 15px;
-  margin: 250px auto;
+  padding: 35px;
+  margin: 80px auto;
   width: 250px;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: #616161;
+  font-size: 20px;
 }
 
 h2 {
@@ -335,38 +422,51 @@ input {
   border-radius: 8px;
   border-style: none;
   font-size: 16px;
-  height: 100%;
+  font-family: "Roboto", sans-serif;
+  color: #3f3f3f;
+  height: auto;
+  min-height: 30px; /* Justera vid behov */
+  appearance: auto; /* Se till att input får sin standardstil */
+}
+
+input::placeholder {
+  color: #9D9D9D;
+}
+
+#habit-repetition, input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: auto !important;
+  appearance: unset !important;
+  opacity: 1 !important; /* Om de är osynliga */
+  color: orange !important;
 }
 
 select {
   display: flex;
-  width: 100%; /* Säkerställer att dropdownen tar upp hela bredden av föräldraelementet */
+  width: 100%; /* dropdownen tar upp bredden */
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: none;
   background: transparent;
   font-size: 16px;
   box-sizing: border-box;
   position: relative;
-}
-
-option {
-  font-size: 16px; /* Sätter textstorleken på alternativen i dropdownen */
-  padding: 8px; /* Justerar padding i alternativen för bättre läsbarhet */
+  font-family: "Roboto", sans-serif;
+  color: #9D9D9D;
 }
 
 select:valid {
-  color: rgb(255, 136, 0);
+  color: #3f3f3f;
 }
 
-h1 {
-  color: #616161;
-  font-size: 20px;
-}
-
-tasksbody {
+option {
   font-family: "Roboto", sans-serif;
-  background-color: #F3F2EE;
+  font-size: 16px; /* font-size dropdownen */
+  padding: 8px;
+}
+
+.habit-list-container {
+  margin-top: 2px;
 }
 
 header {
@@ -400,7 +500,6 @@ header .login-icon {
   transform: translate(-50%, -50%);
 }
 
-/* Show Task Card */
 .todo {
   position: fixed;
   top: 100vh;
@@ -495,8 +594,6 @@ header .login-icon {
   opacity: 1;
 }
 
-/* Show Task Card */
-/* Edit Task */
 .edit-icon {
   cursor: pointer;
   font-size: 20px;
@@ -511,8 +608,6 @@ header .login-icon {
   color: #FF9900;
 }
 
-/* Edit Task */
-/* Close Task Button */
 .close-icon {
   color: #616161;
   position: absolute;
@@ -523,8 +618,6 @@ header .login-icon {
   transition: color 0.3s ease;
 }
 
-/* Close Task Button */
-/* Add Task Button */
 .add-task-btn {
   display: block;
   width: fit-content;
@@ -542,8 +635,6 @@ header .login-icon {
   background-color: #5A5A5A;
 }
 
-/* Add Task Button */
-/* Delete Task Button */
 .delete-task-btn {
   background: none;
   border: none;
@@ -563,8 +654,6 @@ header .login-icon {
   opacity: 1;
 }
 
-/* Delete Task Button */
-/* List Container */
 .list-container {
   display: block;
   background-color: #FBFAF7;
@@ -579,8 +668,6 @@ header .login-icon {
   border: 1px #D9D9D9;
 }
 
-/* List Container */
-/* Custom Checkbox Styles */
 .checkbox-input {
   opacity: 0;
   position: absolute;
@@ -591,19 +678,17 @@ header .login-icon {
   cursor: pointer;
 }
 
-/* Style the custom checkbox */
 .custom-checkbox {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
 }
 
-/* Style the custom icon */
 .checkbox-icon {
   width: 20px;
   height: 20px;
   display: inline-block;
-  background-size: contain; /* Make sure the icon is contained */
+  background-size: contain;
   background-repeat: no-repeat;
   transition: contain;
 }
@@ -614,27 +699,23 @@ header .login-icon {
   object-fit: contain;
 }
 
-/* Change the icon's appearance when checked */
 .checkbox-input:checked + .checkbox-icon {
-  background-image: url("/images/iconchecked.svg"); /* Replace with checked state icon */
+  background-image: url("/images/iconchecked.svg");
 }
 
-/* Unchecked State */
 .checkbox-input:not(:checked) + .checkbox-icon {
   background-image: url("/images/iconunchecked.svg");
 }
 
-/* Add this to your CSS */
 .completed .checkbox-input + .checkbox-icon {
-  background-image: url("/images/iconchecked.svg"); /* Custom checked icon */
+  background-image: url("/images/iconchecked.svg");
 }
 
 .completed span {
-  text-decoration: line-through; /* Apply strikethrough to task title */
-  color: #7C7C7C; /* Optional: Change color to a greyish tone */
+  text-decoration: line-through;
+  color: #7C7C7C;
 }
 
-/* To Do */
 #todo-list {
   list-style: none;
   padding: 0;
@@ -661,8 +742,6 @@ header .login-icon {
   background-color: #F4F4F4;
 }
 
-/* To Do */
-/* Edit modal */
 h1[contenteditable],
 h2[contenteditable],
 p[contenteditable] {
@@ -673,8 +752,6 @@ p[contenteditable] {
   opacity: 30%;
 }
 
-/* Edit modal */
-/* Footer-stilar */
 .bottom-nav {
   display: flex;
   justify-content: space-around;
@@ -682,7 +759,6 @@ p[contenteditable] {
   position: fixed;
   bottom: 0;
   width: 100%;
-  /* height: $nav-height; */
   border-top: 1px solid #ddd;
 }
 .bottom-nav .nav-item {
@@ -692,7 +768,6 @@ p[contenteditable] {
   font-size: 12px;
   text-decoration: none;
   color: #000000;
-  /* margin-top: 18px; */
 }
 .bottom-nav .nav-item img {
   width: 24px;
@@ -716,7 +791,6 @@ p[contenteditable] {
   background-image: url("/images/cta-button-hover.svg");
 }
 
-/* Footer-stilar */
 body {
   background-color: #F3F2EE;
   color: #000000;
