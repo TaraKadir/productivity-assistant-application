@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="/scss/main.css" />
     <script src="/js/home.js" defer></script>
     <script src="/js/main.js" defer></script>
+
+    <style>
+      #home .icon-img {
+        background-image: url("/images/navbar/home-hover-yellow.svg") !important;} 
+       #home{color: #FFBC2C !important;}
+    </style>
+
   </head>
   <body>
     <div class="wrap-container">
@@ -20,7 +27,31 @@
       </main>
       <h1>HOME</h1>
 
+
+
+
       <nav class="bottom-nav">
+        <a href="home.html" id="home" class="icon">
+          <div class="icon-img"></div>
+          <span>Home</span>
+        </a>
+
+        <a href="tasks.html" id="tasks" class="icon">
+          <div class="icon-img"></div>
+          <span>Tasks</span>
+        </a>
+
+        <button class="cta-button"></button>
+        <a href="habits.html" id="habits" class="icon">
+          <div class="icon-img"></div>
+          <span>Habits</span>
+        </a>
+
+        <a href="events.html" id="events" class="icon">
+          <div class="icon-img"></div>
+          <span>Events</span> 
+    </nav>
+      <!-- <nav class="bottom-nav">
         <a href="home.html" class="nav-item"
           ><img
             src="/images/home-1_svgrepo.com.svg"
@@ -46,7 +77,7 @@
             alt="Events icon, press to go to event page"
           /><span>Events</span></a
         >
-      </nav>
+      </nav> -->
     </div>
   </body>
 </html>

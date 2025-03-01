@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="/scss/main.css" />
     <script src="/js/events.js" defer></script>
     <script src="../js/main.js" defer></script>
+
+    <head>
+      <style>
+        #events .icon-img {
+          background-image: url("/images/navbar/calender-hover-yellow.svg") !important;}
+        #events{color: #FFBC2C !important;}
+      </style>
+    </head>
+
   </head>
   <body>
     <div class="wrap-container">
@@ -17,7 +26,7 @@
 
       <main>
         <p class="date">Loading date...</p>
-        <h1>Events</h1>
+        <h1>EVENTS</h1>
 
         <div class="filter-sort-container">
           <!--  Filter-knapp -->
@@ -57,42 +66,47 @@
         </div>
       </main>
 
-      <!-- Popup för att lägga till nytt event -->
-      <div id="add-event-popup" class="popup">
-        <div class="popup-content">
-          <span class="close-popup">&times;</span>
+      <!-- Popup för att lägga till ett nytt event -->
+      <div id="event-popup" class="event-popup">
+        <div class="event-popup-content">
+          <span class="event-close-popup">&times;</span>
           <h2>Add New Event</h2>
           <input type="text" id="event-title" placeholder="Title.." />
           <textarea
             id="event-description"
             placeholder="Description.."
           ></textarea>
+
+          <div class="event-due-date">
+            <label for="due-date">Due date</label>
+            <input type="datetime-local" id="due-date" />
+          </div>
+
           <button id="save-event-btn">Save</button>
         </div>
       </div>
 
       <nav class="bottom-nav">
-        <a href="home.html" class="nav-item">
-          <img src="/images/home-1_svgrepo.com.svg" alt="Home icon" />
+        <a href="home.html" id="home" class="icon">
+          <div class="icon-img"></div>
           <span>Home</span>
         </a>
-        <a href="tasks.html" class="nav-item">
-          <img src="/images/form_svgrepo.com.svg" alt="Tasks icon" />
+
+        <a href="tasks.html" id="tasks" class="icon">
+          <div class="icon-img"></div>
           <span>Tasks</span>
         </a>
+
         <button class="cta-button"></button>
-        <a href="habits.html" class="nav-item">
-          <img
-            src="/images/fitness-outline_svgrepo.com.svg"
-            alt="Habits icon"
-          />
+        <a href="habits.html" id="habits" class="icon">
+          <div class="icon-img"></div>
           <span>Habits</span>
         </a>
-        <a href="events.html" class="nav-item">
-          <img src="/images/calender_svgrepo.com.svg" alt="Events icon" />
-          <span>Events</span>
-        </a>
-      </nav>
+
+        <a href="events.html" id="events" class="icon">
+          <div class="icon-img"></div>
+          <span>Events</span> 
+    </nav>
     </div>
   </body>
 </html>
