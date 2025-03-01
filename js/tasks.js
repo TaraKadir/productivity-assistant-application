@@ -1,45 +1,59 @@
 document.addEventListener('DOMContentLoaded', function () {
-  let tasks = JSON.parse(localStorage.getItem('tasks')) || {
-      task1: { title: "Task 1 Title", category: "Category 1", description: "This is a description for task 1." },
-      task2: { title: "Task 2 Title", category: "Category 2", description: "This is a description for task 2." },
-      task3: { title: "Task 3 Title", category: "Category 3", description: "This is a description for task 3." }
-  };
+  let tasks = JSON.parse(localStorage.getItem('tasks')) || {};
   let currentTaskId = null;
   let isEditing = false;
-  let newTaskCreated = false;                                                                                                                                                                                                                                
-  function openToDoModal(taskId) {
+  let newTaskCreated = false; 
+  /* Hantera Popup */
+  function openToDoModal(taskId, isEditingMode = false) {
       let todoNode = document.querySelector("#todo");
       if (!todoNode) return;
       todoNode.classList.add("todo-active");
+      todoNode.style.display = 'block'; 
       currentTaskId = taskId;
+
       const title = todoNode.querySelector(".todo-title");
       const category = todoNode.querySelector(".category-title");
       const description = todoNode.querySelector(".todo-description");
-      if (tasks[taskId]) {
-          title.textContent = tasks[taskId].title;
-          category.textContent = tasks[taskId].category;
-          description.textContent = tasks[taskId].description;
-      } else {
-          title.textContent = "No Title";
-          category.textContent = "No Category";
-          description.textContent = "No Description";
-      }
-      title.removeAttribute("contenteditable");
-      category.removeAttribute("contenteditable");
-      description.removeAttribute("contenteditable");
-      isEditing = false;
-  }
+      const saveBtn = document.querySelector(".save-btn");
+      const editIcon = document.querySelector(".edit-icon");
+      
+    
+    if (isEditingMode) {
+        saveBtn.style.display = "block";
+        editIcon.style.display = "none";
+    } else {
+        saveBtn.style.display = "none";
+        editIcon.style.display = "block";
+    }
+    
+    if (tasks[taskId]) {
+        title.textContent = tasks[taskId].title;
+        category.textContent = tasks[taskId].category;
+        description.textContent = tasks[taskId].description;
+    } else {
+        title.textContent = "New Task";
+        category.textContent = "No Category";
+        description.textContent = "Enter task description...";
+    }
+  
+      
+      title.setAttribute("contenteditable", isEditingMode ? "true" : "false");
+      category.setAttribute("contenteditable", isEditingMode ? "true" : "false");
+      description.setAttribute("contenteditable", isEditingMode ? "true" : "false");
+  } 
   function closeToDo() {
       let todoNode = document.querySelector("#todo");
       if (!todoNode) return;
-      if (newTaskCreated && currentTaskId) {
-      delete tasks[currentTaskId];
-      localStorage.setItem("tasks", JSON.stringify(tasks));
+      
       newTaskCreated = false;
-      }
-      todoNode.classList.remove("todo-active");
-      updateTaskList();
-  }
+      isEditing = false;
+      todoNode.style.display = 'none'; 
+
+      if (newTaskCreated && currentTaskId && !isEditing) { 
+      delete tasks[currentTaskId]; 
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+    }
   function enableEditing() {
       if (!isEditing) {
           document.querySelector(".todo-title").setAttribute("contenteditable", "true");
@@ -50,28 +64,41 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   function saveTask() {
       if (currentTaskId) {
+         
+                  // TA BORT KOD //
+          // let tasks = JSON.parse(localStorage.getItem("tasks")) || {};
+         
           const title = document.querySelector(".todo-title").textContent;
           const category = document.querySelector(".category-title").textContent;
           const description = document.querySelector(".todo-description").textContent;
-          tasks[currentTaskId] = { title, category, description };
+
+          tasks[currentTaskId] = { title, category, description }; 
           localStorage.setItem("tasks", JSON.stringify(tasks));
+         
+          console.log(tasks);
+          
           updateTaskList();
+
           closeToDo();
       }
   }
   function updateTaskList() {
+      console.log("Updating Task List", tasks);
       const taskList = document.getElementById("todo-list");
       taskList.innerHTML = "";
       Object.keys(tasks).forEach(taskId => {
           const task = tasks[taskId];
           const li = document.createElement("li");
+          
           if (task.checked) {
           li.classList.add("completed"); 
-      }
+          }
+
       const taskTitle = document.createElement("span");
       taskTitle.textContent = task.title;
       taskTitle.classList.add("task-title");
-
+      
+      
       const checkboxLabel = document.createElement("label");
       checkboxLabel.classList.add("custom-checkbox");
       const checkboxInput = document.createElement("input");
@@ -83,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
       checkboxIcon.classList.add("checkbox-icon");
       
       const customIcon = document.createElement("img");
-      customIcon.src = "/images/iconunchecked.svg"; 
+      customIcon.src = task.checked ? "/images/iconchecked.svg" : "/images/iconunchecked.svg";
       checkboxIcon.appendChild(customIcon);
       
       checkboxInput.style.display = "none";
@@ -95,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
           localStorage.setItem("tasks", JSON.stringify(tasks)); 
           updateTaskList(); 
 
+  // Confetti 
   if (checkboxInput.checked) {
     fire(0.25, {
       spread: 26,
@@ -121,31 +149,22 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-const count = 400,
-  defaults = {
-    origin: { y: 0.91 },
-  };
-function fire(particleRatio, opts) {
-  confetti(
-    Object.assign({}, defaults, opts, {
-      particleCount: Math.floor(count * particleRatio),
-    })
-  );
-}
           const showTaskBtn = document.createElement("button");
-          showTaskBtn.textContent = "Show Task Card";
+          showTaskBtn.textContent = task.title;
           showTaskBtn.classList.add("show-task-btn");
           showTaskBtn.setAttribute("data-task", taskId);
           showTaskBtn.addEventListener("click", function () {
-              openToDoModal(taskId);
+              openToDoModal(taskId, false);
           });
+
           const deleteBtn = document.createElement("button");
-          deleteBtn.innerHTML = `<img src="/images/bin.svg" alt="Delete" class="delete-icon">`;
+          deleteBtn.innerHTML = '<img src="/images/bin.svg" alt="Delete" class="delete-icon">';
           deleteBtn.classList.add("delete-task-btn");
           deleteBtn.setAttribute("data-task", taskId);
           deleteBtn.addEventListener("click", function () {
               deleteTask(taskId);
           });
+
           li.appendChild(checkboxLabel);
           li.appendChild(taskTitle);
           li.appendChild(showTaskBtn);
@@ -154,29 +173,57 @@ function fire(particleRatio, opts) {
       });
   }
   function addNewTask() {
-      const taskId = "task" + Date.now();
-      tasks[taskId] = { title: "New Task", category: "No Category", description: "Enter task details..." };
+      const taskId = "task" + Date.now() + Math.floor(Math.random() * 1000);
+      console.log("Current tasks in localStorage:", localStorage.getItem("tasks"));
+       
+      // TA BORT KOD //
+      // if (tasks[taskId]) {
+      //   return;   
+      // }
+      
+      tasks[taskId] = { title: "New Task", category: "No Category", description: "Enter task details...", checked: false };
       localStorage.setItem("tasks", JSON.stringify(tasks));
-      newTaskCreated = true; 
+      newTaskCreated = true;
+  
       updateTaskList();
-      openToDoModal(taskId);
-  }
+
+      currentTaskId = taskId;  
+      openToDoModal(taskId, true);
+      enableEditing();
+  } 
   function deleteTask(taskId) {
       delete tasks[taskId];
       localStorage.setItem("tasks", JSON.stringify(tasks));
       updateTaskList();
   }
-  document.getElementById("todo-list").addEventListener("click", function(event) {
-      if (event.target && event.target.matches(".checkbox-input")) {
-       
-      }
-      if (event.target && event.target.matches(".show-task-btn")) {
-        
-      }
-    });
+                    // TA BORT KOD //
+  //  document.getElementById("todo-list").addEventListener("click", function(event) {
+  //      if (event.target && event.target.matches(".checkbox-input")) {
+         
+  //      }
+  //      if (event.target && event.target.matches(".show-task-btn")) {
+         
+  //      }
+  //    });
+
   document.getElementById("add-task-btn").addEventListener("click", addNewTask);
   document.querySelector(".save-btn").addEventListener("click", saveTask);
   document.querySelector(".close-icon").addEventListener("click", closeToDo);
   document.querySelector(".edit-icon").addEventListener("click", enableEditing);
-  updateTaskList();
+  
+// Fire confetti function
+const count = 400,
+defaults = {
+    origin: { y: 0.91 },
+};
+
+function fire(particleRatio, opts) {
+confetti(
+    Object.assign({}, defaults, opts, {
+        particleCount: Math.floor(count * particleRatio),
+    })
+);
+}
+
+updateTaskList(); 
 });
