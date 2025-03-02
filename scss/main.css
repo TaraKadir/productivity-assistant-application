@@ -36,24 +36,55 @@ header {
   align-items: center;
   padding-top: 15px;
   width: 100%;
+
+
+  
 }
 header .logo {
   width: 50px;
 }
-header .login-icon {
-  margin-top: 5%;
-  margin-left: 70%;
-  width: 30px;
+
+
+header #login .icon-img {
+  width: 24px;                
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-image: url("/images/login.svg");
 }
+#login {
+  /* border: 0.5px solid orange; */
+  margin-left: 200px;
+
+}
+    
+    header #login:hover .icon-img {
+      background-image: url("/images/login-hover-yellow.svg");
+    }
+
+
+
+.bottom-nav .icon .icon-img {
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 4px; 
+}
+
+
+
 
 .bottom-nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: fixed;
+  background-color: #F3F2EE ;      
   bottom: 0;
   width: 100%;
-  /* height: $nav-height; */
   border-top: 1px solid #ddd;
 }
 .bottom-nav .nav-item {
@@ -79,7 +110,7 @@ header .login-icon {
   background-repeat: no-repeat;
   border: none;
   position: absolute;
-  bottom: 10px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
@@ -181,7 +212,7 @@ h1 {
 }
 
 .filter-btn, .sort-btn {
-  color: #000 !important; /* Försäkrar att texten blir svart på events sidan */
+  color: #000 !important; /* Försäkrar att texten blir svart på events sidan TA INTE BORT!!*/
 }
 
 .filter-menu {
@@ -254,6 +285,78 @@ h1 {
   max-width: 400px;
 }
 
+.event-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.event-popup .event-popup-content {
+  background: #FBFAF7;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  width: 320px;
+  position: relative;
+}
+.event-popup .event-close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.event-popup input, .event-popup textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  background: #F8F7F4;
+}
+.event-popup textarea {
+  height: 80px;
+  resize: none;
+}
+.event-popup .event-due-date {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.event-popup .event-due-date label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 8px;
+  color: #7D7D7D;
+}
+.event-popup .event-due-date input {
+  border: none;
+  background: #F8F7F4;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.event-popup button {
+  background: #FFBC2C;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
 @media (max-width: 430px) {
   .wrap-container {
     max-width: 100%;
@@ -262,14 +365,10 @@ h1 {
     font-size: 35px;
   }
 }
-#habit-body {
-  padding: 10px;
-}
-
-.main-habit {
+/* .main-habit {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .action-buttons {
   display: flex;
@@ -278,7 +377,7 @@ h1 {
 }
 
 button {
-  background-color: #7c7c7c;
+  background-color: #7C7C7C;
   color: #fff;
   margin-top: 50px;
   padding: 10px 20px;
@@ -293,39 +392,16 @@ button:hover {
   background-color: #444;
 }
 
-/* Skapa overlay-effekt när popup är öppen */
-.editing-mode .habit-list-container {
-  filter: blur(5px); /* Gör bakgrunden oskarp */
-  pointer-events: none; /* Förhindrar klick på korten */
-}
-
-/* Visa overlay när .editing-mode är aktiv */
-.editing-mode #overlay {
-  display: block;
-}
-
-/* Popup ska vara överst */
 .popup {
-  z-index: 10;
-  display: none; /* Dold från början */
+  display: none; /* Dold från början - markera ur om jag vill redigera */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
-}
-
-#habit-popup.popup {
-  background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 300ms ease-in-out;
 }
 
 .popup-content {
@@ -333,7 +409,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   text-align: left;
-  background: #fbfaf7;
+  background: #FBFAF7;
   margin: auto;
   padding: 25px;
   gap: 5px;
@@ -349,50 +425,12 @@ button:hover {
 }
 
 .habit-card {
-  background: #fbfaf7;
+  background: #FBFAF7;
   padding: 35px;
   margin: 80px auto;
   width: 250px;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.habit-list-container {
-  margin-top: 2px;
-}
-
-.habit-form.editing {
-  border: 2px solid #007bff;
-  background-color: #f8f9fa;
-  padding: 10px;
-  transition: 0.3s;
-}
-
-.habit-card {
-  background: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: relative;
-  margin-bottom: 10px;
-}
-
-.habit-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.edit-icon {
-  cursor: pointer;
-  font-size: 18px;
-  color: #007bff;
-  margin-right: 10px;
-}
-
-.edit-icon:hover {
-  color: #0056b3;
 }
 
 h1 {
@@ -408,39 +446,36 @@ h2 {
 }
 
 input {
-  padding: 5px 10px;
+  padding-top: 1px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-radius: 8px;
-  border: none;
+  border-style: none;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   color: #3f3f3f;
   height: auto;
-  min-height: 30px;
-  -webkit-appearance: textfield;
-     -moz-appearance: textfield;
-          appearance: textfield; /* Fix för att säkerställa att input ser normal ut */
-}
-
-/* Fix för att nummerinput ska visa pilar */
-input[type=number] {
-  -webkit-appearance: textfield !important;
-     -moz-appearance: textfield !important;
-          appearance: textfield !important;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  opacity: 1 !important;
-  -webkit-appearance: auto !important;
-          appearance: auto !important;
+  min-height: 30px; /* Justera vid behov */
+  -webkit-appearance: auto;
+     -moz-appearance: auto;
+          appearance: auto; /* Se till att input får sin standardstil */
 }
 
 input::-moz-placeholder {
-  color: #9d9d9d;
+  color: #9D9D9D;
 }
 
 input::placeholder {
-  color: #9d9d9d;
+  color: #9D9D9D;
+}
+
+#habit-repetition, input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: auto !important;
+  appearance: unset !important;
+  opacity: 1 !important; /* Om de är osynliga */
+  color: orange !important;
 }
 
 select {
@@ -452,8 +487,9 @@ select {
   background: transparent;
   font-size: 16px;
   box-sizing: border-box;
+  position: relative;
   font-family: "Roboto", sans-serif;
-  color: #9d9d9d;
+  color: #9D9D9D;
 }
 
 select:valid {
@@ -462,51 +498,17 @@ select:valid {
 
 option {
   font-family: "Roboto", sans-serif;
-  font-size: 16px;
+  font-size: 16px; /* font-size dropdownen */
   padding: 8px;
 }
 
-/* Delete Task Button */
-.delete-task-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  margin-left: 10px;
-  position: relative;
-  z-index: 500;
-}
-.delete-task-btn .delete-icon {
-  width: 20px !important;
-  height: 20px !important;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-}
-.delete-task-btn:hover .delete-icon {
-  opacity: 1;
+.habit-list-container {
+  margin-top: 2px;
 }
 
-tasksbody {
-  font-family: "Roboto", sans-serif;
-  background-color: #f3f2ee;
-}
 
-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 15px;
-  width: 100%;
-}
-header .logo {
-  width: 50px;
-}
-header .login-icon {
-  margin-top: 5%;
-  margin-left: 70%;
-  width: 30px;
-}
+
+
 
 .date {
   text-align: center;
@@ -630,7 +632,7 @@ header .login-icon {
   transition: color 0.3s ease;
 }
 .edit-icon:hover {
-  color: #ff9900;
+  color: #FFBC2C;
 }
 
 /* Edit Task */
@@ -787,8 +789,12 @@ p[contenteditable] {
   opacity: 30%;
 }
 
+
+
+
 /* Edit modal */
-/* Footer-stilar */
+
+/* TARA & SAM - Footer-stilar som ska slängas - Men dubbelkolla gärna */
 .bottom-nav {
   display: flex;
   justify-content: space-around;
@@ -796,7 +802,6 @@ p[contenteditable] {
   position: fixed;
   bottom: 0;
   width: 100%;
-  /* height: $nav-height; */
   border-top: 1px solid #ddd;
 }
 .bottom-nav .nav-item {
@@ -812,23 +817,7 @@ p[contenteditable] {
   width: 24px;
   height: 24px;
 }
-.bottom-nav .cta-button {
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  background-image: url("/images/cta-button.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  border: none;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  cursor: pointer;
-}
-.bottom-nav .cta-button:hover {
-  background-image: url("/images/cta-button-hover.svg");
-}
+
 
 /* Footer-stilar */
 body {
@@ -845,4 +834,123 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-}/*# sourceMappingURL=main.css.map */
+
+}
+
+  
+  
+
+
+
+
+
+/*# sourceMappingURL=main.css.map */
+
+
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  border-top: 1px solid #ddd;
+  background-color: white;
+}
+
+.bottom-nav .icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  font-size: 12px;
+  width: 40px; 
+}
+
+.bottom-nav .icon .icon-img {
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 4px; 
+}
+
+.bottom-nav .icon:hover {
+  color: #FFBC2C;
+}
+
+/* Navbar - Inaktiva knappar */
+.bottom-nav #home .icon-img {
+  background-image: url("/images/navbar/home.svg");
+}
+.bottom-nav #tasks .icon-img {
+  background-image: url("/images/navbar/form.svg");
+}
+.bottom-nav #habits .icon-img {
+  background-image: url("/images/navbar/fitness.svg");
+}
+.bottom-nav #events .icon-img {
+  background-image: url("/images/navbar/calender.svg");
+}
+
+/* Navbar - Hovrade knappar och texter */
+.bottom-nav #home:hover .icon-img {
+  background-image: url("/images/navbar/home-hover-yellow.svg");
+  color: #FFBC2C !important;
+}
+.bottom-nav #tasks:hover .icon-img {
+  background-image: url("/images/navbar/form-hover-yellow.svg");
+  color: #FFBC2C !important;
+}
+.bottom-nav #habits:hover .icon-img {
+  background-image: url("/images/navbar/fitness-hover-yellow.svg");
+  color: #FFBC2C !important;
+}
+.bottom-nav #events:hover .icon-img {
+  background-image: url("/images/navbar/calender-hover-yellow.svg");
+  color: #FFBC2C !important;
+}
+
+
+
+
+
+.edit-btn, .delete-btn {
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+
+.edit-btn {
+  background-image: url("/images/edit-button.svg");
+  background-color: transparent;
+}
+
+.delete-btn {
+  background-image: url("/images/trash.svg");
+  background-color: transparent;
+
+}
+
+
+.edit-btn:hover {
+  background-image: url("/images/edit-button-hover-yellow.svg");
+  background-color: transparent;
+
+}
+
+.delete-btn:hover {
+  background-image: url("/images/trash-hover-yellow.svg");
+  background-color: transparent;
+
+}
