@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
     setupSorting();
     setupEventPopup();
     setupSaveEvent();
-    loadEventsFromLocalStorage(); // Hämta eventen från localStorage vid sidladdning
+    loadEventsFromLocalStorage();
 });
 
-let editingEvent = null; // Håller koll på vilket event som redigeras
+let editingEvent = null;
 
 // Funktionerna för filter-menyn
 function setupFilterMenu() {
@@ -131,6 +131,20 @@ function setupSaveEvent() {
     });
 }
 
+// Formaterar datum och tid till önskat format
+function formatEventDateTime(datetimeString) {
+    const dateObj = new Date(datetimeString);
+    
+    const options = { day: "2-digit", month: "long", year: "numeric" };
+    const formattedDate = dateObj.toLocaleDateString("en-GB", options); // Ex: 19 March 2025 som figma designen
+
+    // Hämta timmar och minuter
+    const hours = dateObj.getHours().toString().padStart(2, "0");
+    const minutes = dateObj.getMinutes().toString().padStart(2, "0");
+
+    return `${formattedDate} | ${hours}:${minutes}`;
+}
+
 function loadEventsFromLocalStorage() {
     const upcomingEventsList = document.getElementById("upcoming-events");
     const finishedEventsList = document.getElementById("finished-events");
@@ -143,15 +157,26 @@ function loadEventsFromLocalStorage() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
+     // Sorteras events i kronologisk ordning
+     events.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+
+        if (dateA.getTime() !== dateB.getTime()) {
+            return dateA - dateB; // Sorterar efter datum
+        } else {
+            return dateA.getHours() - dateB.getHours() || dateA.getMinutes() - dateB.getMinutes(); // Sorterar efter tid om samma datum
+        }
+    });
+
     events.forEach(event => {
         const eventDateObj = new Date(event.date);
         const eventCard = eventTemplate.content.cloneNode(true);
         eventCard.querySelector(".event-title").textContent = event.title;
-        eventCard.querySelector(".event-date").textContent = event.date;
+        eventCard.querySelector(".event-date").textContent = formatEventDateTime(event.date);
 
         const editButton = eventCard.querySelector(".edit-event");
         const deleteButton = eventCard.querySelector(".delete-event");
-
         editButton.addEventListener("click", () => openEditEvent(event));
         deleteButton.addEventListener("click", () => deleteEvent(event.id));
 
@@ -169,11 +194,9 @@ function loadEventsFromLocalStorage() {
 // Funktion för att öppna popup och redigera ett event
 function openEditEvent(event) {
     editingEvent = event;
-
     document.getElementById("event-title").value = event.title;
     document.getElementById("event-description").value = event.description;
     document.getElementById("due-date").value = event.date;
-
     document.getElementById("event-popup").style.display = "flex";
 }
 
