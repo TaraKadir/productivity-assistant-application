@@ -36,24 +36,55 @@ header {
   align-items: center;
   padding-top: 15px;
   width: 100%;
+
+
+  
 }
 header .logo {
   width: 50px;
 }
-header .login-icon {
-  margin-top: 5%;
-  margin-left: 70%;
-  width: 30px;
+
+
+header #login .icon-img {
+  width: 24px;                
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-image: url("/images/login.svg");
 }
+#login {
+  /* border: 0.5px solid orange; */
+  margin-left: 200px;
+
+}
+    
+    header #login:hover .icon-img {
+      background-image: url("/images/login-hover-yellow.svg");
+    }
+
+
+
+.bottom-nav .icon .icon-img {
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 4px; 
+}
+
+
+
 
 .bottom-nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: fixed;
+  background-color: #F3F2EE ;      
   bottom: 0;
   width: 100%;
-  /* height: $nav-height; */
   border-top: 1px solid #ddd;
 }
 .bottom-nav .nav-item {
@@ -79,7 +110,7 @@ header .login-icon {
   background-repeat: no-repeat;
   border: none;
   position: absolute;
-  bottom: 10px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
@@ -376,6 +407,78 @@ h1 {
   width: 100%;
 }
 
+.event-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.event-popup .event-popup-content {
+  background: #FBFAF7;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  width: 320px;
+  position: relative;
+}
+.event-popup .event-close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.event-popup input, .event-popup textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  background: #F8F7F4;
+}
+.event-popup textarea {
+  height: 80px;
+  resize: none;
+}
+.event-popup .event-due-date {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.event-popup .event-due-date label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 8px;
+  color: #7D7D7D;
+}
+.event-popup .event-due-date input {
+  border: none;
+  background: #F8F7F4;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.event-popup button {
+  background: #FFBC2C;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
 @media (max-width: 430px) {
   .wrap-container {
     max-width: 100%;
@@ -384,10 +487,10 @@ h1 {
     font-size: 35px;
   }
 }
-.main-habit {
+/* .main-habit {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .action-buttons {
   display: flex;
@@ -410,6 +513,21 @@ h1 {
   transition: background 0.3s ease-in-out;
 }
 
+/* button {
+  background-color: #7C7C7C;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #FFBC2C;
+  
+} 
 /* button {
   background-color: #7C7C7C;
   color: #fff;
@@ -514,7 +632,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 select {
   display: flex;
-  width: 100%; /* dropdownen tar upp bredden */
+  width: 100%;
   padding: 8px;
   border-radius: 8px;
   border: none;
@@ -540,22 +658,9 @@ option {
   margin-top: 2px;
 }
 
-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 15px;
-  width: 100%;
-}
-header .logo {
-  width: 50px;
-}
-header .login-icon {
-  margin-top: 5%;
-  margin-left: 70%;
-  width: 30px;
-}
+
+
+
 
 .date {
   text-align: center;
@@ -676,7 +781,7 @@ header .login-icon {
   transition: color 0.3s ease;
 }
 .edit-icon:hover {
-  color: #FF9900;
+  color: #FFBC2C;
 }
 
 .close-icon {
@@ -825,6 +930,12 @@ p[contenteditable] {
   opacity: 30%;
 }
 
+
+
+
+/* Edit modal */
+
+/* TARA & SAM - Footer-stilar som ska slängas - Men dubbelkolla gärna */
 .bottom-nav {
   display: flex;
   justify-content: space-around;
@@ -878,4 +989,123 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-}/*# sourceMappingURL=main.css.map */
+
+}
+
+  
+  
+
+
+
+
+
+/*# sourceMappingURL=main.css.map */
+
+
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  border-top: 1px solid #ddd;
+  background-color: white;
+}
+
+.bottom-nav .icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  font-size: 12px;
+  width: 40px; 
+}
+
+.bottom-nav .icon .icon-img {
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 4px; 
+}
+
+.bottom-nav .icon:hover {
+  color: #FFBC2C;
+}
+
+/* Navbar - Inaktiva knappar */
+.bottom-nav #home .icon-img {
+  background-image: url("/images/navbar/home.svg");
+}
+.bottom-nav #tasks .icon-img {
+  background-image: url("/images/navbar/form.svg");
+}
+.bottom-nav #habits .icon-img {
+  background-image: url("/images/navbar/fitness.svg");
+}
+.bottom-nav #events .icon-img {
+  background-image: url("/images/navbar/calender.svg");
+}
+
+/* Navbar - Hovrade knappar och texter */
+.bottom-nav #home:hover .icon-img {
+  background-image: url("/images/navbar/home-hover-yellow.svg");
+  color: #FFBC2C !important;
+}
+.bottom-nav #tasks:hover .icon-img {
+  background-image: url("/images/navbar/form-hover-yellow.svg");
+  color: #FFBC2C !important;
+}
+.bottom-nav #habits:hover .icon-img {
+  background-image: url("/images/navbar/fitness-hover-yellow.svg");
+  color: #FFBC2C !important;
+}
+.bottom-nav #events:hover .icon-img {
+  background-image: url("/images/navbar/calender-hover-yellow.svg");
+  color: #FFBC2C !important;
+}
+
+
+
+
+
+.edit-btn, .delete-btn {
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+
+.edit-btn {
+  background-image: url("/images/edit-button.svg");
+  background-color: transparent;
+}
+
+.delete-btn {
+  background-image: url("/images/trash.svg");
+  background-color: transparent;
+
+}
+
+
+.edit-btn:hover {
+  background-image: url("/images/edit-button-hover-yellow.svg");
+  background-color: transparent;
+
+}
+
+.delete-btn:hover {
+  background-image: url("/images/trash-hover-yellow.svg");
+  background-color: transparent;
+
+}

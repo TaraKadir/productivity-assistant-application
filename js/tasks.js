@@ -207,3 +207,15 @@ confetti(
 
 updateTaskList(); 
 });
+
+// Förlåt jag hade en commit i task vilket var den här nedanför men vet inte om jag har råkat lägga till den eller om den ska vara där? /Lo :/
+function enableEditing() {
+  if (!isEditing) {
+      document.querySelector(".todo-title").setAttribute("contenteditable", "true");
+      document.querySelector(".category-title").setAttribute("contenteditable", "true");
+      document.querySelector(".todo-description").setAttribute("contenteditable", "true");
+      isEditing = true;
+  }
+}
+
+document.querySelector(".edit-icon").addEventListener("click", enableEditing);
