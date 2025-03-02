@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const saveBtn = document.querySelector(".save-btn");
       const editIcon = document.querySelector(".edit-icon");
       
-    
     if (isEditingMode) {
         saveBtn.style.display = "block";
         editIcon.style.display = "none";
@@ -36,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
         description.textContent = "Enter task description...";
     }
   
-      
       title.setAttribute("contenteditable", isEditingMode ? "true" : "false");
       category.setAttribute("contenteditable", isEditingMode ? "true" : "false");
       description.setAttribute("contenteditable", isEditingMode ? "true" : "false");
@@ -64,9 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   function saveTask() {
       if (currentTaskId) {
-         
-                  // TA BORT KOD //
-          // let tasks = JSON.parse(localStorage.getItem("tasks")) || {};
          
           const title = document.querySelector(".todo-title").textContent;
           const category = document.querySelector(".category-title").textContent;
@@ -97,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const taskTitle = document.createElement("span");
       taskTitle.textContent = task.title;
       taskTitle.classList.add("task-title");
-      
       
       const checkboxLabel = document.createElement("label");
       checkboxLabel.classList.add("custom-checkbox");
@@ -176,11 +170,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const taskId = "task" + Date.now() + Math.floor(Math.random() * 1000);
       console.log("Current tasks in localStorage:", localStorage.getItem("tasks"));
        
-      // TA BORT KOD //
-      // if (tasks[taskId]) {
-      //   return;   
-      // }
-      
       tasks[taskId] = { title: "New Task", category: "No Category", description: "Enter task details...", checked: false };
       localStorage.setItem("tasks", JSON.stringify(tasks));
       newTaskCreated = true;
@@ -196,16 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem("tasks", JSON.stringify(tasks));
       updateTaskList();
   }
-                    // TA BORT KOD //
-  //  document.getElementById("todo-list").addEventListener("click", function(event) {
-  //      if (event.target && event.target.matches(".checkbox-input")) {
-         
-  //      }
-  //      if (event.target && event.target.matches(".show-task-btn")) {
-         
-  //      }
-  //    });
-
+ 
   document.getElementById("add-task-btn").addEventListener("click", addNewTask);
   document.querySelector(".save-btn").addEventListener("click", saveTask);
   document.querySelector(".close-icon").addEventListener("click", closeToDo);

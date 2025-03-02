@@ -395,7 +395,22 @@ h1 {
   justify-content: space-between;
 }
 
-button {
+.add-task-btn, button{
+  background-color: #FFBC2C;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin: 3px auto;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+/* button {
   background-color: #7C7C7C;
   color: #fff;
   margin-top: 50px;
@@ -409,7 +424,7 @@ button {
 
 button:hover {
   background-color: #444;
-}
+} */
 
 .popup {
   display: none; /* Dold från början - markera ur om jag vill redigera */
@@ -590,13 +605,13 @@ header .login-icon {
   transition: all 300ms ease-in-out;
   z-index: 1010;
 }
-.todo .todo-content h1.todo-title {
+.todo .todo-content h2.todo-title {
   margin: 10px 0;
   font-size: 20px;
   color: #616161;
   text-align: left;
 }
-.todo .todo-content h2.category-title {
+.todo .todo-content h3.category-title {
   margin: 10px 0;
   font-size: 16px;
   color: #616161;
@@ -800,8 +815,8 @@ header .login-icon {
   background-color: #F4F4F4;
 }
 
-h1[contenteditable],
 h2[contenteditable],
+h3[contenteditable],
 p[contenteditable] {
   border: 1px solid #616161;
   padding: 5px;
