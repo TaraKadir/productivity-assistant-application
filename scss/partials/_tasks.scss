@@ -4,10 +4,7 @@
 //     box-sizing: border-box;
 //   }
   
-  tasksbody {
-    font-family: "Roboto", sans-serif;
-    background-color: #f3f2ee;
-  }
+
   
   header {
     display: flex;
@@ -339,30 +336,30 @@
   /* Edit modal */
   
   /* Footer-stilar */
-  .bottom-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    /* height: $nav-height; */
-    border-top: 1px solid #ddd;
+  // .bottom-nav {
+  //   display: flex;
+  //   justify-content: space-around;
+  //   align-items: center;
+  //   position: fixed;
+  //   bottom: 0;
+  //   width: 100%;
+  //   /* height: $nav-height; */
+  //   border-top: 1px solid #ddd;
   
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 12px;
-      text-decoration: none;
-      color: #000000;
-      /* margin-top: 18px; */
+  //   .nav-item {
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: center;
+  //     font-size: 12px;
+  //     text-decoration: none;
+  //     color: #000000;
+  //     /* margin-top: 18px; */
   
-      img {
-        width: 24px;
-        height: 24px;
-      }
-    }
+  //     img {
+  //       width: 24px;
+  //       height: 24px;
+  //     }
+  //   }
   
     .cta-button {
       border-radius: 50%;
@@ -382,6 +379,6 @@
     .cta-button:hover {
       background-image: url("/images/cta-button-hover.svg");
     }
-  }
+  
   /* Footer-stilar */
   
