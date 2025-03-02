@@ -1,3 +1,139 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habits - Productivity Assistant Application</title>
+    <!-- <link rel="stylesheet" href="/scss/main.css" /> -->
+    <link rel="stylesheet" href="/scss/main.css" />
+
+    <script src="/js/habits.js" defer></script>
+    <script src="/js/main.js" defer></script>
+
+    <head>
+      <style>
+        #habits .icon-img {
+          background-image: url("/images/navbar/fitness-hover-yellow.svg") !important;}
+        #habits{color: #FFBC2C !important;}
+      </style>
+    </head>
+    
+  </head>
+    <body id="habit-body">  
+      <div class="wrap-container">
+        <header>
+          <a href="login.html" id="login" class="icon">
+            <div class="icon-img"></div>
+          </a>
+          <img src="/images/adhd-logo.svg" alt="logo" class="logo" />
+        </header>
+
+        <main>
+          <p class="date">MONDAY 17 MAY 2025</p>
+
+          <h>HABITS</h1>
+
+          <!-- <div class="habit-actions">
+            <button class="edit-btn" data-id="${habit.id}" aria-label="Edit habit"></button>
+            <button class="delete-btn" data-id="${habit.id}" aria-label="Delete habit"></button>
+          </div> -->
+      
+            <!-- Ska väl inte användas?  -->
+          <!-- <button id="createHabitButton">Create new habit</button> -->
+
+
+
+          <div id="habit-popup" class="popup">
+              <div class="popup-content">
+                <img src="/images/cross-svgrepo-com.svg" class="close-icon" alt="Close the modal" style="width: 24; height: 24px;"></i>
+                <!-- <span class="edit-icon">&#9998;</span>   -->
+                <!-- <span class="delete-icon"><img src="/images/bin-20x20-(ny 27 feb).svg" alt="delete habit"></span>   -->
+                <!-- <span class="close">&times;</span> -->
+                <!-- <h1>New Habit</h1>  -->
+                <!-- Borde vara en h2:a <h2>New Habit</h2> -->
+                
+
+                <!-- <div class="popup-inner-content"></div> -->
+                
+
+                <input type="text" id="habit-title" placeholder="Enter Habit title" disabled>
+                
+                <select id="habit-priority" required disabled>
+                    <option value="" disabled selected hidden>Choose priority</option>
+                    <option value="low">Low</option>
+                    <option value="normal">Normal</option>
+                    <option value="high">High</option>
+                </select>
+
+                <input type="number" name="habit-repetition" id="habit-repetition" placeholder="Enter number of repetitions" min="1" disabled>
+                
+                <select id="habit-category" required disabled>
+                    <option value="" disabled selected hidden>Choose category</option>
+                    <option value="health">Health</option>
+                    <option value="study">Study</option>
+                    <option value="clean">Clean</option>
+                </select>
+                
+
+                <div class="button-space">
+                  
+                <div class="action-buttons">
+                <!--  <span class="edit-icon">&#9998;</span>  -->
+                  <!-- <button class="delete-btn"><img src="/images/delete-button.svg" alt="delete habit"></button>   -->
+                  <!-- <button class="delete-btn"> </button> -->
+                  <!-- <img src="delete-button.svg" /> -->
+                  <button id="cancel-btn">Cancel</button>
+                  <button id="save-btn">Save</button>
+                  </div>
+
+                </div>
+              </div>
+          </div>
+
+
+
+
+ 
+    </main>
+ 
+
+        <div class="habit-list-container">
+          <div id="habit-list"></div>
+        </div>
+
+
+
+      <nav class="bottom-nav">
+        <a href="home.html" id="home" class="icon" alt="Home icon, press to go to start page">
+          <div class="icon-img"></div>
+          <span>Home</span>
+        </a>
+
+        <a href="tasks.html" id="tasks" class="icon" alt="Tasks icon, press to go to task page">
+          <div class="icon-img"></div>
+          <span>Tasks</span>
+        </a>
+
+        <button class="cta-button" alt="Add icon, press to add task, habit and event"></button>
+
+        <a href="habits.html" id="habits" class="icon" alt="Habits icon, press to go to habits page">
+          <div class="icon-img"></div>
+          <span>Habits</span>
+        </a>
+
+        <a href="events.html" id="events" class="icon" alt="Events icon, press to go to event page">
+          <div class="icon-img"></div>
+          <span>Events</span> 
+      </nav>
+      </div>
+    </body>
+</html> 
+
+
+
+
+
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,104 +141,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Habits - Productivity Assistant Application</title>
     <link rel="stylesheet" href="/scss/main.css" />
+
     <script src="/js/habits.js" defer></script>
     <script src="/js/main.js" defer></script>
+
+    <head>
+      <style>
+        #habits .icon-img {
+          background-image: url("/images/navbar/fitness-hover-yellow.svg") !important;}
+        #habits{color: #FFBC2C !important;}
+      </style>
+    </head>
+    
   </head>
+    <body id="habit-body">  
+      <div class="wrap-container">
+        <header>
+          <a href="login.html" id="login" class="icon">
+            <div class="icon-img"></div>
+          </a>
+          <img src="/images/adhd-logo.svg" alt="logo" class="logo" />
+        </header>
 
-  <body>
+        <main>
+          <p class="date">MONDAY 17 MAY 2025</p>
 
-    <div class="wrap-container">
+          <h>HABITS</h1>
 
-      <header>
-        <img src="/images/login-icon.svg" alt="login-icon" class="login-icon" />
-        <img src="/images/adhd-logo.svg" alt="logo" class="logo" />
-      </header>
+   
 
-      <main class="main-habit">
-        <p class="date">MONDAY 17 MAY 2025</p>
+          <div id="habit-popup" class="popup">
+              <div class="popup-content">
+                <img src="/images/cross-svgrepo-com.svg" class="close-icon" alt="Close the modal" style="width: 24; height: 24px;"></i>
+      
 
-        <div id="form-container">
-         <button id="createHabitButton">Create new habit</button>
-
-
-
-          <div id="addHabitContainer" class="hidden">
-            <form id="habitForm">
-              <div class="form-row">
-                <label for="title">Title:</label>
-                <input type="text" name="title" id="title" required>
-              </div>
-              <div class="form-row">
-                <label for="priority">Priority:</label>
-                <select name="priority" id="priority">
-                  <option value="empty">Choose</option>
-                  <option value="Low">Low</option>
-                  <option value="Normal">Normal</option>
-                  <option value="High">High</option>
+                <input type="text" id="habit-title" placeholder="Enter Habit title" disabled>
+                
+                <select id="habit-priority" required disabled>
+                    <option value="" disabled selected hidden>Choose priority</option>
+                    <option value="low">Low</option>
+                    <option value="normal">Normal</option>
+                    <option value="high">High</option>
                 </select>
-              </div>
-              <div class="form-row">
-                <label for="repeat">Repeat:</label>
-                <input type="number" name="repeat" id="repeat" value="empty">
-              </div>
-              <div class="form-row">
-                <label for="category">Category:</label>
-                <select name="category" id="category">
-                  <option value="empty">Choose</option>
-                  <option value="study">Study</option>
-                  <option value="workout">Workout</option>
-                  <option value="cleaning">Cleaning</option>
+
+                <input type="number" name="habit-repetition" id="habit-repetition" placeholder="Enter number of repetitions" min="1" disabled>
+                
+                <select id="habit-category" required disabled>
+                    <option value="" disabled selected hidden>Choose category</option>
+                    <option value="health">Health</option>
+                    <option value="study">Study</option>
+                    <option value="clean">Clean</option>
                 </select>
+                
+
+                <div class="button-space">
+                  
+                <div class="action-buttons">
+ 
+                  <button id="cancel-btn">Cancel</button>
+                  <button id="save-btn">Save</button>
+                  </div>
+
+                </div>
               </div>
-              
-              <div class="habit-action-btn">
-                <button id="cancel-habit-btn">Cancel</button>
-                <input type="submit" value="Add" id="add-habit-button">
-              </div>
-            </form>
           </div>
-          
 
 
+
+
+ 
+    </main>
+ 
+
+        <div class="habit-list-container">
+          <div id="habit-list"></div>
         </div>
 
+          <div class="category-popup">
+            <button class="category-btn" data-category="health">Health</button>
+            <button class="category-btn" data-category="study">Study</button>
+            <button class="category-btn" data-category="clean">Clean</button>
+          </div>
 
-
-
-      </main>
-
+  
 
 
       <nav class="bottom-nav">
-        <a href="home.html" class="nav-item"
-          ><img
-            src="/images/home-1_svgrepo.com.svg"
-            alt="Home icon, press to go to start page"
-          /><span>Home</span></a
-        >
-        <a href="tasks.html" class="nav-item"
-          ><img
-            src="/images/form_svgrepo.com.svg"
-            alt="Tasks icon, press to go to task page"
-          /><span>Tasks</span></a
-        >
-        <button class="cta-button"></button>
-        <a href="habits.html" class="nav-item"
-          ><img
-            src="/images/fitness-outline_svgrepo.com.svg"
-            alt="Habits icon, press to go to habits page"
-          /><span>Habits</span></a
-        >
-        <a href="events.html" class="nav-item"
-          ><img
-            src="/images/calender_svgrepo.com.svg"
-            alt="Events icon, press to go to event page"
-          /><span>Events</span></a
-        >
+        <a href="home.html" id="home" class="icon" alt="Home icon, press to go to start page">
+          <div class="icon-img"></div>
+          <span>Home</span>
+        </a>
+
+        <a href="tasks.html" id="tasks" class="icon" alt="Tasks icon, press to go to task page">
+          <div class="icon-img"></div>
+          <span>Tasks</span>
+        </a>
+
+        <button class="cta-button" alt="Add icon, press to add task, habit and event"></button>
+
+        <a href="habits.html" id="habits" class="icon" alt="Habits icon, press to go to habits page">
+          <div class="icon-img"></div>
+          <span>Habits</span>
+        </a>
+
+        <a href="events.html" id="events" class="icon" alt="Events icon, press to go to event page">
+          <div class="icon-img"></div>
+          <span>Events</span> 
       </nav>
-    </div>
+      </div>
+    </body>
+</html>  -->
 
 
-
-</body>
-</html>
