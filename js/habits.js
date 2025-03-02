@@ -1229,12 +1229,250 @@
 
 // SISTA FÖRSÖK INNNAN SOV 03,25
 
+// document.addEventListener("DOMContentLoaded", function () {
+//     const habitPopup = document.getElementById("habit-popup");
+//     const ctaButton = document.querySelector(".cta-button");
+//     const closePopup = document.querySelector(".close-icon");
+//     const cancelButton = document.getElementById("cancel-btn");
+//     const saveButton = document.getElementById("save-btn");
+//     const habitList = document.getElementById("habit-list");
+//     const overlay = document.getElementById("overlay");
+
+//     const titleInput = document.getElementById("habit-title");
+//     const prioritySelect = document.getElementById("habit-priority");
+//     const repetitionsInput = document.getElementById("habit-repetition");
+//     const categorySelect = document.getElementById("habit-category");
+
+//     let habits = JSON.parse(localStorage.getItem("habits")) || [];
+//     let currentEditingHabitId = null;
+
+//     function openPopup(habit = null) {
+//         document.body.classList.add("editing-mode");
+//         habitPopup.style.display = "flex";
+
+//         // **SÄKERSTÄLL ATT INPUT-FÄLTEN ÄR AKTIVA**
+//         titleInput.removeAttribute("disabled");
+//         prioritySelect.removeAttribute("disabled");
+//         repetitionsInput.removeAttribute("disabled");
+//         categorySelect.removeAttribute("disabled");
+
+//         if (habit) {
+//             // **Fyll i formuläret om vi redigerar en vana**
+//             titleInput.value = habit.title;
+//             prioritySelect.value = habit.priority;
+//             repetitionsInput.value = habit.repetitions;
+//             categorySelect.value = habit.category;
+//             currentEditingHabitId = habit.id;
+//         } else {
+//             // **Töm formuläret om vi lägger till en ny vana**
+//             titleInput.value = "";
+//             prioritySelect.value = "";
+//             repetitionsInput.value = "";
+//             categorySelect.value = "";
+//             currentEditingHabitId = null;
+//         }
+//     }
+
+//     function closePopupFunc() {
+//         document.body.classList.remove("editing-mode");
+//         habitPopup.style.display = "none";
+//     }
+
+//     function saveHabit() {
+//         const title = titleInput.value.trim();
+//         const priority = prioritySelect.value;
+//         const repetitions = repetitionsInput.value;
+//         const category = categorySelect.value;
+
+//         if (title === "") {
+//             alert("Please enter a habit title!");
+//             return;
+//         }
+
+//         if (currentEditingHabitId !== null) {
+//             // Uppdatera befintlig vana
+//             const habitIndex = habits.findIndex(h => h.id === currentEditingHabitId);
+//             if (habitIndex !== -1) {
+//                 habits[habitIndex] = { 
+//                     id: currentEditingHabitId, 
+//                     title, 
+//                     priority, 
+//                     repetitions, 
+//                     category 
+//                 };
+//             }
+//         } else {
+//             // Skapa ny vana
+//             const newHabit = {
+//                 id: Date.now(),
+//                 title,
+//                 priority,
+//                 repetitions,
+//                 category
+//             };
+//             habits.push(newHabit);
+//         }
+
+//         localStorage.setItem("habits", JSON.stringify(habits));
+//         renderHabits();
+//         closePopupFunc();
+//     }
+
+//     function renderHabits() {
+//         habitList.innerHTML = "";
+
+//         habits.forEach(habit => {
+//             const habitCard = document.createElement("div");
+//             habitCard.classList.add("habit-card");
+
+//             habitCard.innerHTML = `
+//                 <h3>${habit.title}</h3> 
+//                 <p><strong>Priority:</strong> ${habit.priority}</p>
+//                 <p><strong>Repetitions:</strong> ${habit.repetitions}</p>
+//                 <p><strong>Category:</strong> ${habit.category}</p>
+//                 <div class="habit-actions">
+//                     <span class="edit-icon" data-id="${habit.id}" title="Edit habit">&#9998;</span>
+//                     <img src="/images/bin-33x33-ny-27-feb.svg" alt="Delete" class="delete-icon">
+
+//                     <button class="delete-btn" data-id="${habit.id}">Delete</button>
+//                 </div>
+//             `;
+
+//             habitList.appendChild(habitCard);
+//         });
+
+
+        
+
+//         document.querySelectorAll(".edit-icon").forEach(editIcon => {
+//             editIcon.addEventListener("click", function () {
+//                 const habitId = parseInt(this.getAttribute("data-id"));
+//                 const habit = habits.find(h => h.id === habitId);
+//                 if (habit) {
+//                     openPopup(habit);
+//                 }
+//             });
+//         });
+
+//         document.querySelectorAll(".delete-btn").forEach(btn => {
+//             btn.addEventListener("click", function () {
+//                 const habitId = parseInt(this.getAttribute("data-id"));
+//                 habits = habits.filter(habit => habit.id !== habitId);
+//                 localStorage.setItem("habits", JSON.stringify(habits));
+//                 renderHabits();
+//             });
+//         });
+//     }
+
+//     // **Öppna popup för att lägga till ny vana**
+//     ctaButton.addEventListener("click", () => openPopup(null));
+    
+//     // **Stäng popup vid klick på stäng-knappen eller avbryt-knappen**
+//     closePopup.addEventListener("click", closePopupFunc);
+//     cancelButton.addEventListener("click", closePopupFunc);
+
+//     // **Spara vanan**
+//     saveButton.addEventListener("click", saveHabit);
+
+//     // **Stäng popup om man klickar utanför den (på overlay)**
+//     overlay.addEventListener("click", closePopupFunc);
+
+//     renderHabits();
+// });
+
+
+
+// // DELETEKNAPP FIXA: 
+
+
+
+
+// // // const createHabitButton = document.getElementById('createHabitButton');
+// // // const addHabitContainer = document.getElementById('addHabitContainer');
+// // // createHabitButton.addEventListener('click', () =>{
+// // //     addHabitContainer.classList.toggle('hidden');
+// // //     createHabitButton.style.display = 'none';
+// // // });
+// // // KOD SOM SKA KOMMENTERATS UT 24 feb 22.43
+// document.addEventListener("DOMContentLoaded", function(){
+//     // const createHabitButton = document.getElementById("createHabitButton");
+//     const habitPopup = document.getElementById("habit-popup");
+//     // const closePopup = document.querySelector(".close"); //Min
+//     const closePopup = document.querySelector(".close-icon"); //Utifrån Sams
+//     const cancelButton = document.getElementById("cancel-btn");
+//     const saveButton = document.getElementById("save-btn");
+//     const habitList = document.getElementById("habit-list")
+//     let habits = JSON.parse(localStorage.getItem("habits")) || [];
+//     function openPopup(){
+//         habitPopup.style.display = "flex";
+//     }
+//     function closePopupFunc(){
+//         habitPopup.style.display = "none";
+//     }
+//     function saveHabit(){
+//         const title = document.getElementById("habit-title").value;
+//         const priority = document.getElementById("habit-priority").value;
+//         const repetitions = document.getElementById("habit-repetition").value;
+//         const category = document.getElementById("habit-category").value;
+//         if (title.trim () === ""){
+//             alert("Please enter a habit title!");
+//             return;
+//         }
+//         const newHabit = {
+//             id: Date.now(),
+//             title,
+//             priority,
+//             repetitions,
+//             category
+//         };
+//         habits.push(newHabit);
+//         localStorage.setItem("habits", JSON.stringify(habits));
+//         renderHabits();
+//         closePopupFunc();
+//     }
+//     function renderHabits(){
+//         habitList.innerHTML = "";
+//         habits.forEach(habit => {
+//             const habitCard = document.createElement("div");
+//             habitCard.classList.add("habit-card");
+//             habitCard.innerHTML = `
+//             <h3>${habit.title}</h3>
+//             <p><strong></strong>${habit.priority}</p>
+//             <p><strong>Priority:</strong>${habit.repetitions}</p>
+//             <p><strong></strong>${habit.category}</p>
+//             <button class="delete-btn" data-id="${habit.id}">Delete</button>
+//             `;
+//             habitList.appendChild(habitCard);
+//         });
+//         document.querySelectorAll(".delete-btn").forEach(btn => {
+//             btn.addEventListener("click", function() {
+//                 const habitId = parseInt(this.getAttribute("data-id"));
+//                 habits = habits.filter(habit => habit.id !== habitId);
+//                 localStorage.setItem("habits", JSON.stringify(habits));
+//                 renderHabits();
+//             });
+//         });
+//     }
+//     createHabitButton.addEventListener("click", openPopup);
+//     closePopup.addEventListener("click", closePopupFunc);
+//     cancelButton.addEventListener("click", closePopupFunc);
+//     saveButton.addEventListener("click", saveHabit);
+//     renderHabits();
+// });
+
+
+// 27 feb 13.59
+
 document.addEventListener("DOMContentLoaded", function () {
     const habitPopup = document.getElementById("habit-popup");
     const ctaButton = document.querySelector(".cta-button");
     const closePopup = document.querySelector(".close-icon");
     const cancelButton = document.getElementById("cancel-btn");
     const saveButton = document.getElementById("save-btn");
+    // const deleteButton = document.getElementById("delete-btn"); //  ändrade från icon? 
+        // const editButton = document.getElementById("edit-btn"); //  ändrade från icon? 
+    // const deleteButton = document.createElement("delete-btn"); //  ändrade från icon? 
+    // const editButton = document.createElement("edit-btn"); //  ändrade från icon? 
     const habitList = document.getElementById("habit-list");
     const overlay = document.getElementById("overlay");
 
@@ -1331,21 +1569,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p><strong>Repetitions:</strong> ${habit.repetitions}</p>
                 <p><strong>Category:</strong> ${habit.category}</p>
                 <div class="habit-actions">
-                    <span class="edit-icon" data-id="${habit.id}" title="Edit habit">&#9998;</span>
-                    <img src="/images/bin-33x33-ny-27-feb.svg" alt="Delete" class="delete-icon">
 
-                    <button class="delete-btn" data-id="${habit.id}">Delete</button>
-                </div>
-            `;
+                    <button class="edit-btn" data-id="${habit.id}"></button>
+                    <button class="delete-btn" data-id="${habit.id}"></button>
 
+               
+                </div>`; 
+                 
+                // <span class="edit-btn" data-id="${habit.id}" <button class="edit-btn"><img src="/images/edit-button.svg" alt="edit" class="edit-svg"></span>
+                    
+                // <span class="delete-btn" data-id="${habit.id}"<button class="delete-btn"><img src="/images/delete-button.svg" alt="Delete" class="delete-svg"></button></span>
+
+            
+            // <button class="edit-btn" data-id="${habit.id}" <button class="edit-btn"></button>  
+              //  <span class=".edit-icon" data-id="${habit.id}" title="Edit habit">&#9998;</span>
+                // prova utan övre 
+
+            // //  <button class="delete-icon" data-id="${habit.id}">"/images/home.svg"</button>
+                    // hör till  <button class="delete-btn" data-id="${habit.id}">Delete</button> där <button class="delete-icon" data-id="${habit.id}">Delete</button> ligger
             habitList.appendChild(habitCard);
         });
 
-
-        
-
-        document.querySelectorAll(".edit-icon").forEach(editIcon => {
-            editIcon.addEventListener("click", function () {
+        // document.querySelectorAll(".edit-icon").forEach(editIcon => {
+        document.querySelectorAll(".edit-btn").forEach(btn => {
+            btn.addEventListener("click", function () {
                 const habitId = parseInt(this.getAttribute("data-id"));
                 const habit = habits.find(h => h.id === habitId);
                 if (habit) {
@@ -1354,6 +1601,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
+        // document.querySelectorAll(".delete-btn").forEach(btn => {
         document.querySelectorAll(".delete-btn").forEach(btn => {
             btn.addEventListener("click", function () {
                 const habitId = parseInt(this.getAttribute("data-id"));
@@ -1379,9 +1627,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     renderHabits();
 });
+// editButton.addEventListener("click");
 
 
 
-// DELETEKNAPP FIXA: 
 
 
