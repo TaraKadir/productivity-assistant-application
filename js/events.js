@@ -93,7 +93,7 @@ function setupSaveEvent() {
     const eventTitle = document.getElementById("event-title");
     const eventDescription = document.getElementById("event-description");
     const eventDate = document.getElementById("due-date");
-    
+
     saveEventBtn.addEventListener("click", () => {
         const title = eventTitle.value.trim();
         const description = eventDescription.value.trim();
@@ -107,13 +107,14 @@ function setupSaveEvent() {
         let events = JSON.parse(localStorage.getItem("events")) || [];
 
         if (editingEvent) {
-            // Uppdatera befintligt event
-            editingEvent.title = title;
-            editingEvent.description = description;
-            editingEvent.date = date;
+            const eventIndex = events.findIndex(e => e.id === editingEvent.id);
+            if (eventIndex !== -1) {
+                events[eventIndex].title = title;
+                events[eventIndex].description = description;
+                events[eventIndex].date = date;
+            }
             editingEvent = null;
         } else {
-            // Skapa nytt event-objekt
             const newEvent = {
                 id: Date.now(),
                 title,
@@ -130,10 +131,10 @@ function setupSaveEvent() {
     });
 }
 
-// Funktion för att ladda in event från `localStorage`
 function loadEventsFromLocalStorage() {
     const upcomingEventsList = document.getElementById("upcoming-events");
     const finishedEventsList = document.getElementById("finished-events");
+    const eventTemplate = document.getElementById("event-template");
 
     upcomingEventsList.innerHTML = "";
     finishedEventsList.innerHTML = "";
@@ -144,29 +145,24 @@ function loadEventsFromLocalStorage() {
 
     events.forEach(event => {
         const eventDateObj = new Date(event.date);
-        const eventCard = document.createElement("div");
-        eventCard.classList.add("event-card");
-        eventCard.innerHTML = `
-            <h3 class="event-title">${event.title}</h3>
-            <p class="event-date">${event.date}</p>
-            <p class="event-description">${event.description}</p>
-            <button class="edit-event">✏️</button>
-            <button class="delete-event">🗑</button>
-        `;
+        const eventCard = eventTemplate.content.cloneNode(true);
+        eventCard.querySelector(".event-title").textContent = event.title;
+        eventCard.querySelector(".event-date").textContent = event.date;
 
-        // Hantera färdigställda event
+        const editButton = eventCard.querySelector(".edit-event");
+        const deleteButton = eventCard.querySelector(".delete-event");
+
+        editButton.addEventListener("click", () => openEditEvent(event));
+        deleteButton.addEventListener("click", () => deleteEvent(event.id));
+
         if (eventDateObj < today) {
-            eventCard.classList.add("finished-event");
+            eventCard.querySelector(".event-card").classList.add("finished-event");
             eventCard.querySelector(".event-title").style.textDecoration = "line-through";
             eventCard.querySelector(".event-title").style.color = "#7D7D7D";
             finishedEventsList.appendChild(eventCard);
         } else {
             upcomingEventsList.appendChild(eventCard);
         }
-
-        // Lägg till funktioner för att redigera och ta bort
-        eventCard.querySelector(".edit-event").addEventListener("click", () => openEditEvent(event));
-        eventCard.querySelector(".delete-event").addEventListener("click", () => deleteEvent(event.id));
     });
 }
 

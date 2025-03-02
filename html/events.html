@@ -66,6 +66,23 @@
             <div id="finished-events" class="events-list"></div>
           </section>
         </div>
+
+        <template id="event-template">
+          <div class="event-card">
+            <div class="event-info">
+              <h3 class="event-title"></h3>
+              <p class="event-date"></p>
+            </div>
+            <div class="event-actions">
+              <img src="/images/edit.svg" class="edit-event" alt="Edit" />
+              <img
+                src="/images/trash.svg"
+                class="delete-event"
+                alt="Delete"
+              />
+            </div>
+          </div>
+        </template>
       </main>
 
       <!-- Popup för att lägga till ett nytt event -->
